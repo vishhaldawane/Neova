@@ -1,3 +1,67 @@
+/*
+ * 
+ * 			Think	Feel	time	Action	Result
+ * 			|		|				|			|
+ * 			invisible				eclipse		outputscreen
+ * 
+ * 
+ */
+
+class Report
+{
+	
+}
+
+class Person {
+	
+}
+class Trick
+{
+
+}
+class Magic { 
+	
+}
+class Stick { }
+class MagicStick extends Stick { }
+class Magician extends Person //isA
+{
+	MagicStick  ms = new MagicStick(); //hasA
+
+	//producesA		//usesA
+	Magic perform(Trick t) {
+			
+		Magic theMagic = new Magic();
+		return theMagic;
+	}
+}
+
+class Show { }
+class MagicShow
+{
+	Magician theMagician = new Magician();
+	
+	void runTheShow()
+	{
+			Trick t = new Trick();
+			Magic mag = theMagician.perform(t);
+			
+	}
+}
+class City
+{
+	CircusShow c;
+	MagicShow  m;
+}
+
+
+
+class Student extends Person
+{
+	Report rpt = new Report();
+	
+}
+
 
 public class LaundryTest {
 	//main  ctrl+spacebar
@@ -26,9 +90,7 @@ public class LaundryTest {
 	//The method fuzzyWash(int, String) in the type 
 	//WashingMachine is not applicable for 
 		//the arguments (int, Cloth)
-		
-		//9820 44 34 64
-		
+				
 		//sysout <-- ctrl+space bar
 		WashingMachine washMach = new WashingMachine();
 		
@@ -121,6 +183,8 @@ class Machine
 }
 class WashingMachine extends Machine //isA
 {
+	int capacity; //9kg
+	String company; //samsung/ LG
 	private WashingTub washTub = new WashingTub(); //hasA
 	
 	void fuzzyWash() {
@@ -166,4 +230,66 @@ class WashingTub  extends Tub {
 		System.out.println("Spinning....");
 	}
 }
+
+
+class Player
+{
+	
+}
+class Cricketer extends Player
+{
+	
+}
+
+class Over
+{
+	int numberOfBalls; // 6
+	int numberOfWides; //3 
+	int numberOfNoBalls;
+	int numberOfDeadBalls;
+	int numberOfRuns;
+	int numberOfSixers;
+	int numerOfFourRuns;
+	int numberOfWickets;
+	int numerOfDotBalls;
+	float economy;
+	
+	
+}
+class Baller extends Cricketer //isA
+{
+	Over o1 = new Over(); //hasA
+	Over o2 = new Over();
+	Over o3 = new Over();
+	Over o4 = new Over();
+	Over o5 = new Over();
+	
+	
+	
+	
+}
+
+
+class Team
+{
+	Baller b1 = new Baller();
+	Baller b1 = new Baller();
+	Baller b1 = new Baller();
+		
+}
+
+class Match
+{
+	Team team1 = new Team();
+	Team team2 = new Team();
+	
+}
+
+
+
+
+
+
+
+
 
