@@ -11,12 +11,33 @@ public class LaundryTest {
 		c1.setClothCost(4000);
 		c1.setClothStatus("Dirty");
 		
-		System.out.println("myJeans : "+c1); //will invoke toString()
+		
+		Cloth c2 = new Cloth();
+		c2.setClothType("T-Shirt");
+		c2.setClothBrand("Benetton");
+		c2.setClothColor("White");
+		c2.setClothCost(3000);
+		c2.setClothStatus("Very Dirty");
+		
+		System.out.println("Before wash : myJeans : "+c1); //will invoke toString()
+		System.out.println("Before wash : tshirt  : "+c2); //will invoke toString()
+		
+		
+	//The method fuzzyWash(int, String) in the type 
+	//WashingMachine is not applicable for 
+		//the arguments (int, Cloth)
+		
+		//9820 44 34 64
 		
 		//sysout <-- ctrl+space bar
-		//WashingMachine washMach = new WashingMachine();
-		//String whichCloth = "TShirt";
-		//whichCloth = washMach.fuzzyWash(30, whichCloth);
+		WashingMachine washMach = new WashingMachine();
+		
+		c1 = washMach.fuzzyWash(30, c1);
+		c2 = washMach.fuzzyWash(30, c2);
+		
+		System.out.println("After wash :  myJeans : "+c1); //will invoke toString()
+		System.out.println("After wash :  tshirt  : "+c2); //will invoke toString()
+		
 		
 		//System.out.println("Cloth status : "+whichCloth);
 		
@@ -115,7 +136,15 @@ class WashingMachine extends Machine //isA
 			washTub.wash();
 			return "Washed "+cloth;
 		}
-		
+		//producesA				//usesA (int,    String)
+		Cloth fuzzyWash(int minutes, Cloth theCloth) {
+			System.out.println("Fuzzy wash program set for "+minutes+" minutes");
+			System.out.println("Washing... "+theCloth.getClothType()+ " which is "+theCloth.getClothStatus());
+			washTub.wash();
+			theCloth.setClothStatus("Washed");
+			return theCloth;
+		}
+				
 	
 	
 }
