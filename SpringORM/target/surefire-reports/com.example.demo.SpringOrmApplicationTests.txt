@@ -1,0 +1,26 @@
+-------------------------------------------------------------------------------
+Test set: com.example.demo.SpringOrmApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 10.726 s <<< FAILURE! - in com.example.demo.SpringOrmApplicationTests
+insertDeptTest  Time elapsed: 0.327 s  <<< ERROR!
+org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [SYS_PK_10108]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.example.demo.SpringOrmApplicationTests.insertDeptTest(SpringOrmApplicationTests.java:34)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.example.demo.SpringOrmApplicationTests.insertDeptTest(SpringOrmApplicationTests.java:34)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: integrity constraint violation: unique constraint or index violation; SYS_PK_10108 table: DEPT5
+	at com.example.demo.SpringOrmApplicationTests.insertDeptTest(SpringOrmApplicationTests.java:34)
+Caused by: org.hsqldb.HsqlException: integrity constraint violation: unique constraint or index violation; SYS_PK_10108 table: DEPT5
+	at com.example.demo.SpringOrmApplicationTests.insertDeptTest(SpringOrmApplicationTests.java:34)
+
+deleteEmpTest  Time elapsed: 0.054 s  <<< ERROR!
+java.lang.RuntimeException: Object not found to delete
+	at com.example.demo.SpringOrmApplicationTests.deleteEmpTest(SpringOrmApplicationTests.java:152)
+
+deleteDeptTest  Time elapsed: 0.01 s  <<< ERROR!
+java.lang.RuntimeException: Object not found to delete
+	at com.example.demo.SpringOrmApplicationTests.deleteDeptTest(SpringOrmApplicationTests.java:77)
+
+selectAllEmpTest  Time elapsed: 0.01 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because "empList" is null
+	at com.example.demo.SpringOrmApplicationTests.selectAllEmpTest(SpringOrmApplicationTests.java:93)
+
