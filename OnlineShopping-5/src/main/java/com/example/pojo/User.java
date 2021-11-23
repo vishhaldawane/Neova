@@ -32,11 +32,17 @@ public class User {
 	@Column(name = "mobileNumber")
 	private long mobileNumber;
 	
-	@OneToOne(cascade = CascadeType.ALL,mappedBy = "userIdFK")
-	private Wishlist wishList;
+	@Column(name = "address")
+	private String address;
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
-	private Set<Address> address;
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "w_u_Id")
+	private Wishlist u_w_Id;
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "o_u_Id")
+	private Set<Order> u_o_Id;
+
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "c_u_Id")
+	private Cart u_c_Id;
 
 	public int getUserId() {
 		return userId;
@@ -78,29 +84,45 @@ public class User {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public Wishlist getWishList() {
-		return wishList;
-	}
-
-	public void setWishList(Wishlist wishList) {
-		this.wishList = wishList;
-	}
-
-	public Set<Address> getAddress() {
+	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(Set<Address> address) {
+	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public Wishlist getU_w_Id() {
+		return u_w_Id;
+	}
+
+	public void setU_w_Id(Wishlist u_w_Id) {
+		this.u_w_Id = u_w_Id;
+	}
+
+	public Set<Order> getU_o_Id() {
+		return u_o_Id;
+	}
+
+	public void setU_o_Id(Set<Order> u_o_Id) {
+		this.u_o_Id = u_o_Id;
+	}
+
+	public Cart getU_c_Id() {
+		return u_c_Id;
+	}
+
+	public void setU_c_Id(Cart u_c_Id) {
+		this.u_c_Id = u_c_Id;
 	}
 
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", name=" + name + ", email=" + email + ", password=" + password
-				+ ", mobileNumber=" + mobileNumber + ", wishList=" + wishList + ", address=" + address + "]";
+				+ ", mobileNumber=" + mobileNumber + ", address=" + address + ", u_w_Id=" + u_w_Id + ", u_o_Id="
+				+ u_o_Id + ", u_c_Id=" + u_c_Id + "]";
 	}
-
 	
 	
-
+	
 }

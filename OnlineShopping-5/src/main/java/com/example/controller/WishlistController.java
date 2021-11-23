@@ -14,45 +14,48 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.pojo.User;
 import com.example.pojo.Wishlist;
 import com.example.repo.UserRepositoryImpl;
+import com.example.repo.WishlistRepositoryImpl;
+
+
 
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/wishlist")
+public class WishlistController {
 
 	@Autowired
-	UserRepositoryImpl userRepo;
+	WishlistRepositoryImpl wishilistRepo;
 	
-	@GetMapping("/get/{uID}")  //localhost:8080/dept/get/1
-	public User getUser(@PathVariable("uID") int x)
+	@GetMapping("/get/{wID}")  //localhost:8080/dept/get/1
+	public Wishlist getWishlist(@PathVariable("wID") int x)
 	{
-		User user;
-		user = userRepo.selectUser(x);
-		return user;
+		Wishlist wishlist;
+		wishlist = wishilistRepo.selectWishlist(x);
+		return wishlist;
 	}
 	
 	@PostMapping("/add")
-	public void addUser(@RequestBody User aObj)
+	public void addWishlists(@RequestBody Wishlist aObj)
 	{
-		userRepo.insertUser(aObj);
+		wishilistRepo.insertWishlist(aObj);
 	}
 	
 	@GetMapping("/getAll")  //localhost:8080/dept/get/1
-	public List <User> getUsers()
+	public List <Wishlist> getWishlists()
 	{
-		List <User> userList;
-		userList = userRepo.selectUsers();
-		return userList;
+		List <Wishlist> wishlistList;
+		wishlistList = wishilistRepo.selectWishlists();
+		return wishlistList;
 	}
 	
 	@PutMapping("/update")
-	public void updateUser(@RequestBody User uID)
+	public void updateWishlist(@RequestBody Wishlist wID)
 	{
-		userRepo.updateUser(uID);
+		wishilistRepo.updateWishlist(wID);
 	}
 	
 	@PutMapping("/delete/{uID}")
-	public void deleteUser(@PathVariable("uID") int x)
+	public void deleteWishlist(@PathVariable("uID") int x)
 	{
-		userRepo.deleteUser(x);
+		wishilistRepo.deleteWishlist(x);
 	}
 }

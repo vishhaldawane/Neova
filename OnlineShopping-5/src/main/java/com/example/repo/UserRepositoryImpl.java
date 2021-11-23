@@ -12,9 +12,8 @@ import com.example.pojo.User;
 @Repository
 public class UserRepositoryImpl extends BaseRepository implements UserRepository {
 
-	public UserRepositoryImpl() {
-		System.out.println("UserRepositoryImpl ..");	
-    }
+	
+	
 	
 	@Transactional
 	public void insertUser(User uObj) {
@@ -33,7 +32,7 @@ public class UserRepositoryImpl extends BaseRepository implements UserRepository
 
 	@Override
 	public List<User> selectUsers() {
-		List<User>  deptList = new ArrayList<User>();
+		List<User>  userList = new ArrayList<User>();
 
 		System.out.println("UserRepositoryImpl : Selecting all Users...");
 		return super.findAll("User");
@@ -41,7 +40,7 @@ public class UserRepositoryImpl extends BaseRepository implements UserRepository
 	}
 
 	@Transactional
-	public void updateUser(int uID) {
+	public void updateUser(User uID) {
 		System.out.println("UserRepositoryImpl : Updating User...");
 		super.merge(uID);
 

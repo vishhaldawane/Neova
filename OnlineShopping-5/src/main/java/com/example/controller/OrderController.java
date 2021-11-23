@@ -11,48 +11,48 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.pojo.Order;
 import com.example.pojo.User;
-import com.example.pojo.Wishlist;
-import com.example.repo.UserRepositoryImpl;
+import com.example.repo.OrderRepositoryImpl;
 
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/order")
+public class OrderController {
 
 	@Autowired
-	UserRepositoryImpl userRepo;
+	OrderRepositoryImpl orderRepo;
 	
-	@GetMapping("/get/{uID}")  //localhost:8080/dept/get/1
-	public User getUser(@PathVariable("uID") int x)
+	@GetMapping("/get/{oID}")  //localhost:8080/dept/get/1
+	public Order getOrder(@PathVariable("oID") int x)
 	{
-		User user;
-		user = userRepo.selectUser(x);
-		return user;
+		Order order;
+		order = orderRepo.selectOrder(x);
+		return order;
 	}
 	
 	@PostMapping("/add")
-	public void addUser(@RequestBody User aObj)
+	public void addOrder(@RequestBody Order oObj)
 	{
-		userRepo.insertUser(aObj);
+		orderRepo.insertOrder(oObj);
 	}
 	
 	@GetMapping("/getAll")  //localhost:8080/dept/get/1
-	public List <User> getUsers()
+	public List <Order> getOrders()
 	{
-		List <User> userList;
-		userList = userRepo.selectUsers();
-		return userList;
+		List <Order> orderList;
+		orderList = orderRepo.selectOrders();
+		return orderList;
 	}
 	
 	@PutMapping("/update")
-	public void updateUser(@RequestBody User uID)
+	public void updateOrder(@RequestBody Order oID)
 	{
-		userRepo.updateUser(uID);
+		orderRepo.updateOrder(oID);
 	}
 	
-	@PutMapping("/delete/{uID}")
-	public void deleteUser(@PathVariable("uID") int x)
+	@PutMapping("/delete/{oID}")
+	public void deleteOrder(@PathVariable("oID") int x)
 	{
-		userRepo.deleteUser(x);
+		orderRepo.deleteOrder(x);
 	}
 }
