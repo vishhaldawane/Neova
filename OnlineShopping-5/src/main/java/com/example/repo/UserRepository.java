@@ -14,7 +14,7 @@ public interface UserRepository  // extends JpaRepository<User, Integer> {
 	User selectUser(int uID); //R
 	List<User> selectUsers(); //RA
 
-	void updateUser(User uID); //U
+	void updateUser(User uObj); //U
 	void deleteUser(int uID); //D
 	
 	

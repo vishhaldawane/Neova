@@ -24,11 +24,12 @@ public class Cart {
 	@Column(name = "total_Cart_Price")
 	private int total_Cart_Price;
 	
-	@ManyToOne
-	private Product c_p_Id;
-	
 	@OneToOne
-	private User c_u_Id;
+	private User cartUserID;
+	
+	
+	//---------------------------------//
+
 
 	public int getCartId() {
 		return cartId;
@@ -54,28 +55,22 @@ public class Cart {
 		this.total_Cart_Price = total_Cart_Price;
 	}
 
-	public Product getC_p_Id() {
-		return c_p_Id;
+	public User getCartUserID() {
+		return cartUserID;
 	}
 
-	public void setC_p_Id(Product c_p_Id) {
-		this.c_p_Id = c_p_Id;
-	}
-
-	public User getC_u_Id() {
-		return c_u_Id;
-	}
-
-	public void setC_u_Id(User c_u_Id) {
-		this.c_u_Id = c_u_Id;
-	}
-
-	@Override
-	public String toString() {
-		return "Cart [cartId=" + cartId + ", quantity=" + quantity + ", total_Cart_Price=" + total_Cart_Price
-				+ ", c_p_Id=" + c_p_Id + ", c_u_Id=" + c_u_Id + "]";
+	public void setCartUserID(User cartUserID) {
+		this.cartUserID = cartUserID;
 	}
 
 	
+	//---------------------------------//
+
+	
+	@Override
+	public String toString() {
+		return "Cart [cartId=" + cartId + ", quantity=" + quantity + ", total_Cart_Price=" + total_Cart_Price
+				+ ", cartUserID=" + cartUserID + "]";
+	}	
 	
 }

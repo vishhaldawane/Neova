@@ -12,9 +12,10 @@ import com.example.pojo.User;
 @Repository
 public class UserRepositoryImpl extends BaseRepository implements UserRepository {
 
-	
-	
-	
+	public UserRepositoryImpl() {
+		System.out.println("UserRepositoryImpl ..");
+	}
+
 	@Transactional
 	public void insertUser(User uObj) {
 		super.persist(uObj);
@@ -32,7 +33,7 @@ public class UserRepositoryImpl extends BaseRepository implements UserRepository
 
 	@Override
 	public List<User> selectUsers() {
-		List<User>  userList = new ArrayList<User>();
+		List<User> userList = new ArrayList<User>();
 
 		System.out.println("UserRepositoryImpl : Selecting all Users...");
 		return super.findAll("User");
@@ -40,17 +41,23 @@ public class UserRepositoryImpl extends BaseRepository implements UserRepository
 	}
 
 	@Transactional
-	public void updateUser(User uID) {
+	public void updateUser(User uObj) {
+		super.merge(uObj);
 		System.out.println("UserRepositoryImpl : Updating User...");
-		super.merge(uID);
-
 	}
 
 	@Transactional
 	public void deleteUser(int uID) {
-		System.out.println("UserRepositoryImpl : Deleting User");
 		super.remove(User.class, uID);
+		System.out.println("UserRepositoryImpl : Deleting User");
 
+	}
+	
+	@Transactional
+	public void updateUser(int dID) {
+		super.merge(dID);
+		System.out.println("UserRepositoryImpl : Updating User...");
+		
 	}
 
 }

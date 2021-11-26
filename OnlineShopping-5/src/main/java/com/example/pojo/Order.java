@@ -30,10 +30,11 @@ public class Order {
 	private int total_Order_Price;
 	
 	@ManyToOne
-	private User o_u_Id;
+	private User orderUserID;
+	
+	
+	//---------------------------------//
 
-	@ManyToOne
-	private Product o_p_Id;
 
 	public int getOrderId() {
 		return orderId;
@@ -67,26 +68,23 @@ public class Order {
 		this.total_Order_Price = total_Order_Price;
 	}
 
-	public User getO_u_Id() {
-		return o_u_Id;
+	public User getOrderUserID() {
+		return orderUserID;
 	}
 
-	public void setO_u_Id(User o_u_Id) {
-		this.o_u_Id = o_u_Id;
+	public void setOrderUserID(User orderUserID) {
+		this.orderUserID = orderUserID;
 	}
 
-	public Product getO_p_Id() {
-		return o_p_Id;
-	}
+	
+	//---------------------------------//
 
-	public void setO_p_Id(Product o_p_Id) {
-		this.o_p_Id = o_p_Id;
-	}
-
+	
+	
 	@Override
 	public String toString() {
 		return "Order [orderId=" + orderId + ", quantity=" + quantity + ", localDate=" + localDate
-				+ ", total_Order_Price=" + total_Order_Price + ", o_u_Id=" + o_u_Id + ", o_p_Id=" + o_p_Id + "]";
+				+ ", total_Order_Price=" + total_Order_Price + ", orderUserID=" + orderUserID + "]";
 	}
 	
 	

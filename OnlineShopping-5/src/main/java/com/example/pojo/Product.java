@@ -19,8 +19,11 @@ public class Product {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "userId")
-	private int userId;
+	@Column(name = "productId")
+	private int productId;
+	
+	@Column(name = "brand")
+	private String brand;
 	
 	@Column(name = "price")
 	private int price;
@@ -31,30 +34,33 @@ public class Product {
 	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "brand")
-	private String brand;
-	
 	@Column(name = "stock_Remaining")
 	private int stock_Remaining;
+
+	@ManyToOne
+	private Admin productAdminID;
 	
 	@ManyToOne
-	private Set<Retailer> p_r_Id;
-	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "o_p_Id")
-	private Set<Order> p_o_Id;
-	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "c_p_Id")
-	private Set<Cart> p_c_Id;
+	private User productUserID;
 
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "w_p_Id")
-	private Set<Wishlist> P_w_Id;
+	
+	//-----------------------------//
 
-	public int getUserId() {
-		return userId;
+	
+	public int getproductId() {
+		return productId;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setproductId(int productId) {
+		this.productId = productId;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 
 	public int getPrice() {
@@ -81,14 +87,6 @@ public class Product {
 		this.description = description;
 	}
 
-	public String getBrand() {
-		return brand;
-	}
-
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
-
 	public int getStock_Remaining() {
 		return stock_Remaining;
 	}
@@ -97,45 +95,35 @@ public class Product {
 		this.stock_Remaining = stock_Remaining;
 	}
 
-	public Set<Retailer> getP_r_Id() {
-		return p_r_Id;
+	public Admin getProductAdminID() {
+		return productAdminID;
 	}
 
-	public void setP_r_Id(Set<Retailer> p_r_Id) {
-		this.p_r_Id = p_r_Id;
+	public void setProductAdminID(Admin productAdminID) {
+		this.productAdminID = productAdminID;
 	}
 
-	public Set<Order> getP_o_Id() {
-		return p_o_Id;
+	public User getProductUserID() {
+		return productUserID;
 	}
 
-	public void setP_o_Id(Set<Order> p_o_Id) {
-		this.p_o_Id = p_o_Id;
-	}
-
-	public Set<Cart> getP_c_Id() {
-		return p_c_Id;
-	}
-
-	public void setP_c_Id(Set<Cart> p_c_Id) {
-		this.p_c_Id = p_c_Id;
-	}
-
-	public Set<Wishlist> getP_w_Id() {
-		return P_w_Id;
-	}
-
-	public void setP_w_Id(Set<Wishlist> p_w_Id) {
-		P_w_Id = p_w_Id;
-	}
-
-	@Override
-	public String toString() {
-		return "Product [userId=" + userId + ", price=" + price + ", image=" + image + ", description=" + description
-				+ ", brand=" + brand + ", stock_Remaining=" + stock_Remaining + ", p_r_Id=" + p_r_Id + ", p_o_Id="
-				+ p_o_Id + ", p_c_Id=" + p_c_Id + ", P_w_Id=" + P_w_Id + "]";
+	public void setProductUserID(User productUserID) {
+		this.productUserID = productUserID;
 	}
 
 	
+	//-----------------------------//
 
+	
+	
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", brand=" + brand + ", price=" + price + ", image=" + image
+				+ ", description=" + description + ", stock_Remaining=" + stock_Remaining + ", productAdminID="
+				+ productAdminID + ", productUserID=" + productUserID + "]";
+	}
+	
+	
+	
+	
 }

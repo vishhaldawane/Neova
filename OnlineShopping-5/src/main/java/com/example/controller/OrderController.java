@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.pojo.Order;
-import com.example.pojo.User;
 import com.example.repo.OrderRepositoryImpl;
 
 @RestController

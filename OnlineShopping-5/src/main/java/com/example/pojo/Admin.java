@@ -1,6 +1,5 @@
 package com.example.pojo;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,9 +25,16 @@ public class Admin {
 	@Column(name = "password")
 	private String password;
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "r_a_Id")
-	private List<Retailer>  a_r_Id;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "retailerAdminID") 
+	private Set<Retailer> adminRetailerID;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productAdminID")
+	private Set<Product> adminProductID;
 
+	
+	//-----------------------------//
+	
+	
 	public int getAdminId() {
 		return adminId;
 	}
@@ -54,18 +59,32 @@ public class Admin {
 		this.password = password;
 	}
 
-	public List<Retailer> getA_r_Id() {
-		return a_r_Id;
+	public Set<Retailer> getAdminRetailerID() {
+		return adminRetailerID;
 	}
 
-	public void setA_r_Id(List<Retailer> a_r_Id) {
-		this.a_r_Id = a_r_Id;
+	public void setAdminRetailerID(Set<Retailer> adminRetailerID) {
+		this.adminRetailerID = adminRetailerID;
 	}
+
+	public Set<Product> getAdminProductID() {
+		return adminProductID;
+	}
+
+	public void setAdminProductID(Set<Product> adminProductID) {
+		this.adminProductID = adminProductID;
+	}
+
+	
+	//-----------------------------//
 
 	
 	@Override
 	public String toString() {
-		return "Admin [adminId=" + adminId + ", name=" + name + ", password=" + password + ", a_r_Id=" + a_r_Id + "]";
+		return "Admin [adminId=" + adminId + ", name=" + name + ", password=" + password + ", adminRetailerID="
+				+ adminRetailerID + ", adminProductID=" + adminProductID + "]";
 	}
 	
+	
 }
+

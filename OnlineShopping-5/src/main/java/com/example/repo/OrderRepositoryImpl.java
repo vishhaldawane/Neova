@@ -9,7 +9,11 @@ import com.example.pojo.Order;
 @Repository
 public class OrderRepositoryImpl extends BaseRepository implements OrderRepository {
 
-    @Transactional
+	public OrderRepositoryImpl() {
+		System.out.println("OrderRepositoryImpl ..");
+	}
+
+	@Transactional
 	public void insertOrder(Order oObj) {
 		super.persist(oObj);
 		System.out.println("Order inserted...");
@@ -26,7 +30,7 @@ public class OrderRepositoryImpl extends BaseRepository implements OrderReposito
 
 	@Override
 	public List<Order> selectOrders() {
-		List<Order>  orderList = new ArrayList<Order>();
+		List<Order> orderList = new ArrayList<Order>();
 
 		System.out.println("OrderRepositoryImpl : Selecting all Orders...");
 		return super.findAll("Order");

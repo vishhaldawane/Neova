@@ -1,16 +1,10 @@
 package com.example.pojo;
 
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,11 +25,19 @@ public class Retailer {
 	@Column(name = "mobileNumber")
 	private long mobileNumber;
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "p_r_Id")
-	private Set<Product> r_p_Id;
+	@Column(name = "categorie")
+	private String categorie;
+	
+	@Column(name = "brand")
+	private String brand;
 	
 	@ManyToOne
-	private Admin r_a_Id;
+	private Admin retailerAdminID;
+	
+	
+	//-----------------------------//
+
+	
 
 	public int getRetailerId() {
 		return retailerId;
@@ -69,26 +71,39 @@ public class Retailer {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public Set<Product> getR_p_Id() {
-		return r_p_Id;
+	public String getCategorie() {
+		return categorie;
 	}
 
-	public void setR_p_Id(Set<Product> r_p_Id) {
-		this.r_p_Id = r_p_Id;
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
 	}
 
-	public Admin getR_a_Id() {
-		return r_a_Id;
+	public String getBrand() {
+		return brand;
 	}
 
-	public void setR_a_Id(Admin r_a_Id) {
-		this.r_a_Id = r_a_Id;
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 
+	public Admin getRetailerAdminID() {
+		return retailerAdminID;
+	}
+
+	public void setRetailerAdminID(Admin retailerAdminID) {
+		this.retailerAdminID = retailerAdminID;
+	}
+
+	
+	//-----------------------------//
+
+	
 	@Override
 	public String toString() {
 		return "Retailer [retailerId=" + retailerId + ", name=" + name + ", password=" + password + ", mobileNumber="
-				+ mobileNumber + ", r_p_Id=" + r_p_Id + ", r_a_Id=" + r_a_Id + "]";
+				+ mobileNumber + ", categorie=" + categorie + ", brand=" + brand + ", retailerAdminID="
+				+ retailerAdminID + "]";
 	}
 	
 	

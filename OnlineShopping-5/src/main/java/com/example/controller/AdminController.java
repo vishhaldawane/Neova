@@ -16,16 +16,14 @@ import com.example.repo.AdminRepositoryImpl;
 
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/admin")
 public class AdminController {
-	
-	
 
 		@Autowired
 		AdminRepositoryImpl  adminRepo;
 		
-		@GetMapping("/get/{oID}")  //localhost:8080/dept/get/1
-		public Admin getOrder(@PathVariable("oID") int x)
+		@GetMapping("/get/{aID}")  //localhost:8080/dept/get/1
+		public Admin getAdmin(@PathVariable("aID") int x)
 		{
 			Admin admin;
 			admin = adminRepo.selectAdmin(x);
@@ -33,28 +31,28 @@ public class AdminController {
 		}
 		
 		@PostMapping("/add")
-		public void addAdmin(@RequestBody Admin oObj)
+		public void addAdmin(@RequestBody Admin aObj)
 		{
 			adminRepo.insertAdmin(aObj);
 		}
 		
 		@GetMapping("/getAll")  //localhost:8080/dept/get/1
-		public List <Order> getOrders()
+		public List <Admin> getAdmins()
 		{
-			List <Order> orderList;
-			orderList = adminRepo.selectOrders();
-			return orderList;
+			List <Admin> adminList;
+			adminList = adminRepo.selectAdmins();
+			return adminList;
 		}
 		
 		@PutMapping("/update")
-		public void updateOrder(@RequestBody Order oID)
+		public void updateAdmin(@RequestBody Admin aID)
 		{
-			adminRepo.updateOrder(oID);
+			adminRepo.updateAdmin(aID);
 		}
 		
-		@PutMapping("/delete/{oID}")
-		public void deleteOrder(@PathVariable("oID") int x)
+		@PutMapping("/delete/{aID}")
+		public void deleteAdmin(@PathVariable("aID") int x)
 		{
-			adminRepo.deleteOrder(x);
+			adminRepo.deleteAdmin(x);
 		}
 }

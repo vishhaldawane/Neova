@@ -6,13 +6,15 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
-
-import com.example.pojo.User;
 import com.example.pojo.Wishlist;
+
+
 @Repository
 public class WishlistRepositoryImpl extends BaseRepository implements WishlistRepository {
 
-	
+	public WishlistRepositoryImpl() {
+		System.out.println("WishlistRepositoryImpl ..");	
+    }
 	
 	@Transactional
 	public void insertWishlist(Wishlist wObj) {
@@ -37,14 +39,14 @@ public class WishlistRepositoryImpl extends BaseRepository implements WishlistRe
 		return super.findAll("Wishlist");
 	}
 
-	@Override
+	@Transactional
 	public void updateWishlist(Wishlist wID) {
 		super.merge(wID);
 		System.out.println("WishlistRepositoryImpl : Updating Wishlist...");
 		
 	}
 
-	@Override
+	@Transactional
 	public void deleteWishlist(int wID) {
 		super.remove(Wishlist.class, wID);
 		System.out.println("WishlistRepositoryImpl : Deleting Wishlist");

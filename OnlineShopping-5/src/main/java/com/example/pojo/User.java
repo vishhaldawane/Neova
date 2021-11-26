@@ -31,18 +31,23 @@ public class User {
 
 	@Column(name = "mobileNumber")
 	private long mobileNumber;
-	
+
 	@Column(name = "address")
 	private String address;
-	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "w_u_Id")
-	private Wishlist u_w_Id;
-	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "o_u_Id")
-	private Set<Order> u_o_Id;
 
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "c_u_Id")
-	private Cart u_c_Id;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productUserID")
+	private Set<Product> userProductID;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "orderUserID")
+	private Set<Order> userOrderID;
+
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "cartUserID")
+	private Cart userCartID;
+
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "wishlistUserID")
+	private Wishlist userWishlistID;
+
+	// ---------------------------------//
 
 	public int getUserId() {
 		return userId;
@@ -92,37 +97,46 @@ public class User {
 		this.address = address;
 	}
 
-	public Wishlist getU_w_Id() {
-		return u_w_Id;
+	public Set<Product> getUserProductID() {
+		return userProductID;
 	}
 
-	public void setU_w_Id(Wishlist u_w_Id) {
-		this.u_w_Id = u_w_Id;
+	public void setUserProductID(Set<Product> userProductID) {
+		this.userProductID = userProductID;
 	}
 
-	public Set<Order> getU_o_Id() {
-		return u_o_Id;
+	public Set<Order> getUserOrderID() {
+		return userOrderID;
 	}
 
-	public void setU_o_Id(Set<Order> u_o_Id) {
-		this.u_o_Id = u_o_Id;
+	public void setUserOrderID(Set<Order> userOrderID) {
+		this.userOrderID = userOrderID;
 	}
 
-	public Cart getU_c_Id() {
-		return u_c_Id;
+	public Cart getUserCartID() {
+		return userCartID;
 	}
 
-	public void setU_c_Id(Cart u_c_Id) {
-		this.u_c_Id = u_c_Id;
+	public void setUserCartID(Cart userCartID) {
+		this.userCartID = userCartID;
 	}
+
+	public Wishlist getUserWishlistID() {
+		return userWishlistID;
+	}
+
+	public void setUserWishlistID(Wishlist userWishlistID) {
+		this.userWishlistID = userWishlistID;
+	}
+
+	// ---------------------------------//
 
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", name=" + name + ", email=" + email + ", password=" + password
-				+ ", mobileNumber=" + mobileNumber + ", address=" + address + ", u_w_Id=" + u_w_Id + ", u_o_Id="
-				+ u_o_Id + ", u_c_Id=" + u_c_Id + "]";
+				+ ", mobileNumber=" + mobileNumber + ", address=" + address + ", userProductID=" + userProductID
+				+ ", userOrderID=" + userOrderID + ", userCartID=" + userCartID + ", userWishlistID=" + userWishlistID
+				+ "]";
 	}
-	
-	
-	
+
 }

@@ -5,10 +5,17 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.stereotype.Repository;
+
 import com.example.pojo.Product;
 
+@Repository
 public class ProductRepositoryImpl extends BaseRepository implements ProductRepository {
 
+	public ProductRepositoryImpl() {
+		System.out.println("ProductRepositoryImpl ..");	
+    }
+	
 	@Transactional
 	public void insertProduct(Product pObj) {
 		super.persist(pObj);
@@ -32,14 +39,14 @@ public class ProductRepositoryImpl extends BaseRepository implements ProductRepo
 		return super.findAll("Product");
 	}
 
-	@Override
+	@Transactional
 	public void updateProduct(Product pID) {
 		super.merge(pID);
 		System.out.println("ProductRepositoryImpl : Updating Product..");
 
 	}
 
-	@Override
+	@Transactional
 	public void deleteProduct(int pID) {
 		super.remove(Product.class, pID);
 		System.out.println("ProductRepositoryImpl : Deleting Product");

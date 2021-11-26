@@ -5,9 +5,11 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.stereotype.Repository;
+
 import com.example.pojo.Admin;
 
-
+@Repository
 public class AdminRepositoryImpl extends BaseRepository implements AdminRepository {
 
 	public AdminRepositoryImpl() {
@@ -33,18 +35,18 @@ public class AdminRepositoryImpl extends BaseRepository implements AdminReposito
 	public List<Admin> selectAdmins() {
 		List<Admin>  adminList = new ArrayList<Admin>();
 
-		System.out.println("OrderRepositoryImpl : Selecting all Admins...");
+		System.out.println("AdminRepositoryImpl : Selecting all Admins...");
 		return super.findAll("Admin");
 	}
 
-	@Override
+	@Transactional
 	public void updateAdmin(Admin aID) {
 		super.merge(aID);
 		System.out.println("AdminRepositoryImpl : Updating Admin...");
 
 	}
 
-	@Override
+	@Transactional
 	public void deleteAdmin(int aID) {
 		super.remove(Admin.class, aID);
 		System.out.println("AdminRepositoryImpl : Deleting Admin");
