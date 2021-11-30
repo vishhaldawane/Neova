@@ -2,8 +2,11 @@ package com.example.repo;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Repository;
+
 import com.example.pojo.Order;
 
 @Repository
@@ -47,7 +50,6 @@ public class OrderRepositoryImpl extends BaseRepository implements OrderReposito
 	public void deleteOrder(int oID) {
 		super.remove(Order.class, oID);
 		System.out.println("OrderRepositoryImpl : Deleting Order");
-
 	}
 
 }

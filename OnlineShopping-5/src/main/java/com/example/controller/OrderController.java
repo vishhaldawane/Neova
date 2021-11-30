@@ -14,15 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.pojo.Order;
 import com.example.repo.OrderRepositoryImpl;
 
+
 @RestController
 @RequestMapping("/order")
 public class OrderController {
 
 	@Autowired
-	OrderRepositoryImpl orderRepo;
+	OrderRepositoryImpl  orderRepo;
 	
 	@GetMapping("/get/{oID}")  //localhost:8080/dept/get/1
-	public Order getOrder(@PathVariable("oID") int x)
+	public Order getAdmin(@PathVariable("oID") int x)
 	{
 		Order order;
 		order = orderRepo.selectOrder(x);

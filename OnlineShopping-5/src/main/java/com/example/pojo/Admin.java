@@ -10,14 +10,18 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "Admin")
-public class Admin {
+public class Admin extends Exception {
 
+	
 	@Id
 	@GeneratedValue
 	@Column(name = "adminId")
 	private int adminId;
+	
+	
 	
 	@Column(name = "name")
 	private String name;
@@ -31,6 +35,7 @@ public class Admin {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productAdminID")
 	private Set<Product> adminProductID;
 
+	
 	
 	//-----------------------------//
 	

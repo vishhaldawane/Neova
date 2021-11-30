@@ -13,9 +13,9 @@ import com.example.pojo.Admin;
 public class AdminRepositoryImpl extends BaseRepository implements AdminRepository {
 
 	public AdminRepositoryImpl() {
-		System.out.println("AdminRepositoryImpl ..");	
-    }
-	
+		System.out.println("AdminRepositoryImpl ..");
+	}
+
 	@Transactional
 	public void insertAdmin(Admin aObj) {
 		super.persist(aObj);
@@ -33,7 +33,7 @@ public class AdminRepositoryImpl extends BaseRepository implements AdminReposito
 
 	@Override
 	public List<Admin> selectAdmins() {
-		List<Admin>  adminList = new ArrayList<Admin>();
+		List<Admin> adminList = new ArrayList<Admin>();
 
 		System.out.println("AdminRepositoryImpl : Selecting all Admins...");
 		return super.findAll("Admin");

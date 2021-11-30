@@ -34,6 +34,8 @@ public class User {
 
 	@Column(name = "address")
 	private String address;
+	
+	//employee_id integer
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productUserID")
 	private Set<Product> userProductID;
