@@ -22,7 +22,7 @@ public class ProductController {
 		@Autowired
 		ProductRepositoryImpl  productRepo;
 		
-		@GetMapping("/get/{pID}")  //localhost:8080/dept/get/1
+		@GetMapping("/get/{pID}")  //localhost:8080/product/get/108
 		public Product getProduct(@PathVariable("pID") int x)
 		{
 			Product product;
@@ -36,7 +36,7 @@ public class ProductController {
 			productRepo.insertProduct(pObj);
 		}
 		
-		@GetMapping("/getAll")  //localhost:8080/dept/get/1
+		@GetMapping("/getAll")  //localhost:8080/product/getAll
 		public List <Product> getProducts()
 		{
 			List <Product> productList;

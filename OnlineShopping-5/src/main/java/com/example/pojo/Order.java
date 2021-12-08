@@ -2,6 +2,7 @@ package com.example.pojo;
 
 import java.time.LocalDate;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,12 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "Order")
+@Table(name = "ordertable")
 public class Order {
 
 	@Id
@@ -31,14 +31,27 @@ public class Order {
 	@Column(name = "total_Order_Price")
 	private int total_Order_Price;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "employee_id")
+	@ManyToOne
+	@JoinColumn(name = "userId")
 	private User orderUserID;
-	
+
 	
 	//---------------------------------//
+	
 
+	public Order() {
+		super();
+	}
 
+	public Order(int quantity, LocalDate localDate, int total_Order_Price, User orderUserID) {
+		super();
+		
+		this.quantity = quantity;
+		this.localDate = localDate;
+		this.total_Order_Price = total_Order_Price;
+		this.orderUserID = orderUserID;
+	}
+	
 	public int getOrderId() {
 		return orderId;
 	}
@@ -82,7 +95,6 @@ public class Order {
 	
 	//---------------------------------//
 
-	
 	
 	@Override
 	public String toString() {

@@ -1,12 +1,16 @@
 package com.example.test;
 
+
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.example.pojo.Admin;
 import com.example.pojo.Retailer;
+
+import com.example.repo.AdminRepositoryImpl;
 import com.example.repo.RetailerRepositoryImpl;
 
 @SpringBootTest
@@ -14,6 +18,9 @@ public class RetailerTest {
 
 	@Autowired
 	RetailerRepositoryImpl retailerRepo;
+	
+	@Autowired
+	AdminRepositoryImpl adminRepo;
 	
 	@Test 
 	void insertRetailerTest()
@@ -28,6 +35,18 @@ public class RetailerTest {
 				
 		retailerRepo.insertRetailer(retailer);
 	}
+	
+	@Test
+	void insertRetailerWithAdminTest() {
+		
+		Admin admin1 = adminRepo.selectAdmin(75);
+		
+		Retailer ret1 = new Retailer("R-Ajay", "rahul123", 9405405522l, "Mobile", "Sony", admin1);
+		
+		retailerRepo.merge(ret1);
+	}
+	
+	
 	
 	@Test 
 	void selectRetailerTest()

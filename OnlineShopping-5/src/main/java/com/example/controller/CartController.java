@@ -21,7 +21,7 @@ public class CartController {
 		@Autowired
 		CartRepositoryImpl cartRepo;
 		
-		@GetMapping("/get/{cID}")  //localhost:8080/dept/get/1
+		@GetMapping("/get/{cID}")  //localhost:8080/cart/get/72
 		public Cart getCart(@PathVariable("cID") int x)
 		{
 			Cart cart;
@@ -35,7 +35,7 @@ public class CartController {
 			cartRepo.insertCart(cObj);
 		}
 		
-		@GetMapping("/getAll")  //localhost:8080/dept/get/1
+		@GetMapping("/getAll")  //localhost:8080/cart/getAll
 		public List <Cart> getCarts()
 		{
 			List <Cart> cartList;

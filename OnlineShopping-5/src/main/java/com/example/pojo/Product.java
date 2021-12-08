@@ -1,66 +1,41 @@
 package com.example.pojo;
 
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Product")
+@Table(name="product")
 public class Product {
-	
+
 	@Id
 	@GeneratedValue
-	@Column(name = "productId")
 	private int productId;
 	
-	@Column(name = "brand")
-	private String brand;
-	
-	@Column(name = "price")
 	private int price;
-	
-	@Column(name = "image")
 	private String image;
-	
-	@Column(name = "description")
 	private String description;
-	
-	@Column(name = "stock_Remaining")
-	private int stock_Remaining;
-
-	@ManyToOne
-	private Admin productAdminID;
+	private String brand;
+	private int stockRemaining;
 	
 	@ManyToOne
-	private User productUserID;
-
+	@JoinColumn(name="adminId")
+	private Admin productAdminId;
 	
-	//-----------------------------//
+	@ManyToOne
+	@JoinColumn(name="userId")
+	private User productUserId;
 
-	
-	public int getproductId() {
+	public int getProductId() {
 		return productId;
 	}
 
-	public void setproductId(int productId) {
+	public void setProductId(int productId) {
 		this.productId = productId;
-	}
-
-	public String getBrand() {
-		return brand;
-	}
-
-	public void setBrand(String brand) {
-		this.brand = brand;
 	}
 
 	public int getPrice() {
@@ -87,43 +62,61 @@ public class Product {
 		this.description = description;
 	}
 
-	public int getStock_Remaining() {
-		return stock_Remaining;
+	public String getBrand() {
+		return brand;
 	}
 
-	public void setStock_Remaining(int stock_Remaining) {
-		this.stock_Remaining = stock_Remaining;
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 
-	public Admin getProductAdminID() {
-		return productAdminID;
+	public int getStockRemaining() {
+		return stockRemaining;
 	}
 
-	public void setProductAdminID(Admin productAdminID) {
-		this.productAdminID = productAdminID;
+	public void setStockRemaining(int stockRemaining) {
+		this.stockRemaining = stockRemaining;
 	}
 
-	public User getProductUserID() {
-		return productUserID;
+	public Admin getProductAdminId() {
+		return productAdminId;
 	}
 
-	public void setProductUserID(User productUserID) {
-		this.productUserID = productUserID;
+	public void setProductAdminId(Admin productAdminId) {
+		this.productAdminId = productAdminId;
 	}
 
-	
-	//-----------------------------//
+	public User getProductUserId() {
+		return productUserId;
+	}
 
-	
-	
+	public void setProductUserId(User productUserId) {
+		this.productUserId = productUserId;
+	}
+
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", brand=" + brand + ", price=" + price + ", image=" + image
-				+ ", description=" + description + ", stock_Remaining=" + stock_Remaining + ", productAdminID="
-				+ productAdminID + ", productUserID=" + productUserID + "]";
+		return "Product [productId=" + productId + ", price=" + price + ", image=" + image + ", description=" + description
+				+ ", brand=" + brand + ", stockRemaining=" + stockRemaining + ", productAdminId=" + productAdminId
+				+ ", productUserId=" + productUserId + "]";
 	}
-	
-	
-	
+
+
+	public Product() {
+		super();
+	}
+
+	public Product(int price, String image, String description, String brand, int stockRemaining, Admin productAdminId,
+			User productUserId) {
+		super();
+		this.price = price;
+		this.image = image;
+		this.description = description;
+		this.brand = brand;
+		this.stockRemaining = stockRemaining;
+		this.productAdminId = productAdminId;
+		this.productUserId = productUserId;
+	}
+
 	
 }

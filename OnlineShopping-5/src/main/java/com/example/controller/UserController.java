@@ -21,7 +21,7 @@ public class UserController {
 	@Autowired
 	UserRepositoryImpl userRepo;
 	
-	@GetMapping("/get/{uID}")  //localhost:8080/dept/get/1
+	@GetMapping("/get/{uID}")  //localhost:8080/user/get/64
 	public User getUser(@PathVariable("uID") int x)
 	{
 		User user;
@@ -35,7 +35,7 @@ public class UserController {
 		userRepo.insertUser(aObj);
 	}
 	
-	@GetMapping("/getAll")  //localhost:8080/dept/get/1
+	@GetMapping("/getAll")  //localhost:8080/user/getAll
 	public List <User> getUsers()
 	{
 		List <User> userList;

@@ -2,8 +2,10 @@ package com.example.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -32,6 +34,7 @@ public class Retailer {
 	private String brand;
 	
 	@ManyToOne
+	@JoinColumn(name = "adminId")
 	private Admin retailerAdminID;
 	
 	
@@ -41,6 +44,34 @@ public class Retailer {
 
 	public int getRetailerId() {
 		return retailerId;
+	}
+
+	/**
+	 * 
+	 */
+	public Retailer() {
+		super();
+	}
+
+	/**
+	 * @param retailerId
+	 * @param name
+	 * @param password
+	 * @param mobileNumber
+	 * @param categorie
+	 * @param brand
+	 * @param retailerAdminID
+	 */
+	public Retailer(String name, String password, long mobileNumber, String categorie, String brand,
+			Admin retailerAdminID) {
+		super();
+		
+		this.name = name;
+		this.password = password;
+		this.mobileNumber = mobileNumber;
+		this.categorie = categorie;
+		this.brand = brand;
+		this.retailerAdminID = retailerAdminID;
 	}
 
 	public void setRetailerId(int retailerId) {

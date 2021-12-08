@@ -9,7 +9,7 @@ class OnlineShopping5ApplicationTests {
 	@Test
 	void contextLoads() {
 		
-	System.out.println("Hey Rishii");
+	System.out.println("Wel-Come to Test Cases");
 	}
 
 }

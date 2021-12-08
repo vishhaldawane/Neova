@@ -2,14 +2,16 @@ package com.example.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "WishList")
+@Table(name = "Wishlist")
 public class Wishlist {
 
 	@Id
@@ -18,11 +20,12 @@ public class Wishlist {
 	private int wishlistId;	
 	
 	@OneToOne
+	@JoinColumn(name = "Userid")
 	private User wishlistUserID;
 	
-	
-	//---------------------------------//
-
+	@OneToOne
+	@JoinColumn(name = "Productid")
+	private Product wishlistProductID;
 
 	public int getWishlistId() {
 		return wishlistId;
@@ -40,14 +43,33 @@ public class Wishlist {
 		this.wishlistUserID = wishlistUserID;
 	}
 
+	public Product getWishlistProductID() {
+		return wishlistProductID;
+	}
+
+	public void setWishlistProductID(Product wishlistProductID) {
+		this.wishlistProductID = wishlistProductID;
+	}
+
+	@Override
+	public String toString() {
+		return "Wishlist [wishlistId=" + wishlistId + ", wishlistUserID=" + wishlistUserID + ", wishlistProductID="
+				+ wishlistProductID + "]";
+	}
+
+	public Wishlist(int wishlistId, User wishlistUserID, Product wishlistProductID) {
+		super();
+		this.wishlistId = wishlistId;
+		this.wishlistUserID = wishlistUserID;
+		this.wishlistProductID = wishlistProductID;
+	}
+
+	public Wishlist() {
+		super();
+	}
+	
+	
 	
 	//---------------------------------//
 
-	
-	@Override
-	public String toString() {
-		return "Wishlist [wishlistId=" + wishlistId + ", wishlistUserID=" + wishlistUserID + "]";
-	}
-	
 }
-

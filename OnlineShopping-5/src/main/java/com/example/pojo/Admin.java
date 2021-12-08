@@ -1,10 +1,12 @@
 package com.example.pojo;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -13,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Admin")
-public class Admin extends Exception {
+public class Admin {
 
 	
 	@Id
@@ -29,17 +31,41 @@ public class Admin extends Exception {
 	@Column(name = "password")
 	private String password;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "retailerAdminID") 
-	private Set<Retailer> adminRetailerID;
+	@OneToMany(cascade = CascadeType.ALL) 
+	private List<Retailer> adminRetailerID = new ArrayList<Retailer>();
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productAdminID")
-	private Set<Product> adminProductID;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productAdminId")
+	private List<Product> adminProductID = new ArrayList<Product>();
 
 	
 	
+	/**
+	 * 
+	 */
+	public Admin() {
+		super();
+	}
+
 	//-----------------------------//
 	
 	
+	/**
+	 * @param adminId
+	 * @param name
+	 * @param password
+	 * @param adminRetailerID
+	 * @param adminProductID
+	 */
+	public Admin(String name, String password, List<Retailer> adminRetailerID,
+			List<Product> adminProductID) {
+		super();
+	
+		this.name = name;
+		this.password = password;
+		this.adminRetailerID = adminRetailerID;
+		this.adminProductID = adminProductID;
+	}
+
 	public int getAdminId() {
 		return adminId;
 	}
@@ -64,19 +90,19 @@ public class Admin extends Exception {
 		this.password = password;
 	}
 
-	public Set<Retailer> getAdminRetailerID() {
+	public List<Retailer> getAdminRetailerID() {
 		return adminRetailerID;
 	}
 
-	public void setAdminRetailerID(Set<Retailer> adminRetailerID) {
+	public void setAdminRetailerID(List<Retailer> adminRetailerID) {
 		this.adminRetailerID = adminRetailerID;
 	}
 
-	public Set<Product> getAdminProductID() {
+	public List<Product> getAdminProductID() {
 		return adminProductID;
 	}
 
-	public void setAdminProductID(Set<Product> adminProductID) {
+	public void setAdminProductID(List<Product> adminProductID) {
 		this.adminProductID = adminProductID;
 	}
 

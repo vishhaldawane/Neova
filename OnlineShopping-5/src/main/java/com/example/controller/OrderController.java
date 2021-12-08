@@ -22,7 +22,7 @@ public class OrderController {
 	@Autowired
 	OrderRepositoryImpl  orderRepo;
 	
-	@GetMapping("/get/{oID}")  //localhost:8080/dept/get/1
+	@GetMapping("/get/{oID}")  //localhost:8080/order/get/125
 	public Order getAdmin(@PathVariable("oID") int x)
 	{
 		Order order;
@@ -36,7 +36,7 @@ public class OrderController {
 		orderRepo.insertOrder(oObj);
 	}
 	
-	@GetMapping("/getAll")  //localhost:8080/dept/get/1
+	@GetMapping("/getAll")  //localhost:8080/order/getAll
 	public List <Order> getOrders()
 	{
 		List <Order> orderList;

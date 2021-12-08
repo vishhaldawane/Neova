@@ -22,7 +22,7 @@ public class WishlistController {
 	@Autowired
 	WishlistRepositoryImpl wishilistRepo;
 	
-	@GetMapping("/get/{wID}")  //localhost:8080/dept/get/1
+	@GetMapping("/get/{wID}")  //localhost:8080/wishlist/get/150
 	public Wishlist getWishlist(@PathVariable("wID") int x)
 	{
 		Wishlist wishlist;
@@ -36,7 +36,7 @@ public class WishlistController {
 		wishilistRepo.insertWishlist(aObj);
 	}
 	
-	@GetMapping("/getAll")  //localhost:8080/dept/get/1
+	@GetMapping("/getAll")  //localhost:8080/wishlist/getAll
 	public List <Wishlist> getWishlists()
 	{
 		List <Wishlist> wishlistList;

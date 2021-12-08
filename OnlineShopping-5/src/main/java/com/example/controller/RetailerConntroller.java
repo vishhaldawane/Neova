@@ -21,7 +21,7 @@ public class RetailerConntroller {
 	@Autowired
 	RetailerRepositoryImpl  retailerRepo;
 	
-	@GetMapping("/get/{rID}")  //localhost:8080/dept/get/1
+	@GetMapping("/get/{rID}")  //localhost:8080/retailer/get/78
 	public Retailer getRetailer(@PathVariable("rID") int x)
 	{
 		Retailer retailer;
@@ -35,7 +35,7 @@ public class RetailerConntroller {
 		retailerRepo.insertRetailer(rObj);
 	}
 	
-	@GetMapping("/getAll")  //localhost:8080/dept/get/1
+	@GetMapping("/getAll")  //localhost:8080/retailer/getAll
 	public List <Retailer> getRetailers()
 	{
 		List <Retailer> retailerList;

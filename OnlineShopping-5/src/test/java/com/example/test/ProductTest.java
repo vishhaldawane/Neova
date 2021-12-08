@@ -6,87 +6,79 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.example.pojo.Admin;
 import com.example.pojo.Product;
+import com.example.pojo.User;
+import com.example.pojo.Wishlist;
+import com.example.repo.AdminRepositoryImpl;
 import com.example.repo.ProductRepositoryImpl;
-
+import com.example.repo.UserRepositoryImpl;
 
 @SpringBootTest
 public class ProductTest {
 
 	@Autowired
 	ProductRepositoryImpl productRepo;
-	
-	@Test 
-	void insertProductTest()
-	{
+
+	@Autowired
+	AdminRepositoryImpl adminRepo;
+
+	@Autowired
+	UserRepositoryImpl userRepo;
+
+	@Test
+	void insertProductTest() {
 		Product product = new Product();
-		
-		product.setBrand("Nike");
-		product.setDescription("Leather");
-		product.setImage(null);
+
 		product.setPrice(1000);
-		product.setStock_Remaining(100);
-				
+		product.setImage("img-1");
+		product.setDescription("Sports");
+		product.setBrand("Adidas");
+		product.setStockRemaining(50);
+	
+
 		productRepo.insertProduct(product);
 	}
 	
-	@Test 
-	void selectProductTest()
-	{
-		Product product ;
-		product = productRepo.selectProduct(47);
-		System.out.println("------------------------------------");
+	
+	@Test
+	void newInsertProductWithUserAndAdminTest() {
+		Admin adminObj = adminRepo.selectAdmin(92);
+		User userObj = userRepo.selectUser(64);
+		
+		Product product1 = new Product();
 
-		System.out.println("Product ID             :"+product.getproductId());
-		System.out.println("Product Brand          :"+product.getBrand());
-		System.out.println("Product Description    :"+product.getDescription());
-		System.out.println("Product Image          :"+product.getImage());
-		System.out.println("Product Price          :"+product.getPrice());
-		System.out.println("Product StockRemaining :"+product.getStock_Remaining());
-		System.out.println("------------------------------------");
+		product1.setPrice(1500);
+		product1.setImage("img-2");
+		product1.setDescription("Sports");
+		product1.setBrand("Nike");
+		product1.setStockRemaining(50);
+		product1.setProductAdminId(adminObj);
+		product1.setProductUserId(userObj);
+		
+		productRepo.insertProduct(product1);
 		
 	}
 	
 	@Test
-	void deleteProductTest()
-	{
-		Product product = new Product();
-		product.getproductId();
-		productRepo.deleteProduct(48);
-	}
-	
-	@Test 
-	void updateProductTest()
-	{
-		Product product = new Product();
-	
-		product.setproductId(0);
-		product.setBrand("Nike");
-		product.setDescription("Soft Leather");
-		product.setImage(null);
-		product.setPrice(1200);
-		product.setStock_Remaining(100);
-				
-		productRepo.updateProduct(product);
-	}
-	
-	@Test 
-	void selectAllProductsTest()
-	{
-		List <Product> productList;
+	void selectAllProductsTest() {
+		List<Product> productList;
 		productList = productRepo.selectProducts();
 		System.out.println("------------------------------------");
 
-		for(Product product : productList)
-		{
-			System.out.println("Product ID             :"+product.getproductId());
-			System.out.println("Product Brand          :"+product.getBrand());
-			System.out.println("Product Description    :"+product.getDescription());
-			System.out.println("Product Image          :"+product.getImage());
-			System.out.println("Product Price          :"+product.getPrice());
-			System.out.println("Product StockRemaining :"+product.getStock_Remaining());
+		for (Product product : productList) {
+			System.out.println("Product prodId     :" + product.getProductId());
+			System.out.println("Product price      :" + product.getPrice());
+			System.out.println("Product image      :" + product.getImage());
+			System.out.println("Product desc       :" + product.getDescription());
+			System.out.println("Product brand      :" + product.getBrand());
+			System.out.println("Product stock_rem. :" + product.getStockRemaining());
+			System.out.println("Product adminId    :" + product.getProductAdminId());
+			System.out.println("Product userId     :" + product.getProductUserId());
 			System.out.println("------------------------------------");
 
 		}
 	}
+	
+		
 }

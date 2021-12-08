@@ -22,7 +22,7 @@ public class AdminController {
 		@Autowired
 		AdminRepositoryImpl  adminRepo;
 		
-		@GetMapping("/get/{aID}")  //localhost:8080/dept/get/1
+		@GetMapping("/get/{aID}")  //localhost:8080/admin/get/75
 		public Admin getAdmin(@PathVariable("aID") int x)
 		{
 			Admin admin;
@@ -36,7 +36,7 @@ public class AdminController {
 			adminRepo.insertAdmin(aObj);
 		}
 		
-		@GetMapping("/getAll")  //localhost:8080/dept/get/1
+		@GetMapping("/getAll")  //localhost:8080/dept/getAll
 		public List <Admin> getAdmins()
 		{
 			List <Admin> adminList;

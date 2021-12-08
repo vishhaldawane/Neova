@@ -1,6 +1,5 @@
 package com.example.test;
 
-
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -8,13 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.pojo.Cart;
+import com.example.pojo.User;
+import com.example.pojo.Wishlist;
 import com.example.repo.CartRepositoryImpl;
+import com.example.repo.UserRepositoryImpl;
 
 @SpringBootTest
 public class CartTest {
 
 	@Autowired
 	CartRepositoryImpl cartRepo;
+
+	@Autowired
+	UserRepositoryImpl userRepo;
 
 	@Test
 	void insertUserTest() {
@@ -27,9 +32,25 @@ public class CartTest {
 	}
 
 	@Test
+	void insertCartWithUserTest() {
+
+		Cart cart = new Cart();
+
+		cart.setQuantity(10);
+		cart.setTotal_Cart_Price(10000);
+
+		User userObj = userRepo.selectUser(64);
+
+		cart.setCartUserID(userObj);
+
+		cartRepo.insertCart(cart);
+
+	}
+
+	@Test
 	void selectCartTest() {
 		Cart cart;
-		cart = cartRepo.selectCart(47);
+		cart = cartRepo.selectCart(72);
 		System.out.println("------------------------------------");
 
 		System.out.println("Cart ID         :" + cart.getCartId());
@@ -41,21 +62,20 @@ public class CartTest {
 
 	@Test
 	void deleteOrderTest() {
-		Cart cart = new Cart();
+		Cart cartObj = cartRepo.find(Cart.class, 73);
+		cartObj.getCartId();
 
-		cart.getCartId();
-
-		cartRepo.deleteCart(48);
+		cartRepo.remove(Cart.class, 73);
 	}
 
 	@Test
-	void updateOrderTest() {
-		Cart cart = new Cart();
+	void updateCartTest() {
+		Cart cartObj = cartRepo.find(Cart.class, 72);
 
-		cart.setQuantity(5);
-		cart.setTotal_Cart_Price(5000);
+		cartObj.setQuantity(5);
+		cartObj.setTotal_Cart_Price(5000);
 
-		cartRepo.insertCart(cart);
+		cartRepo.merge(cartObj);
 	}
 
 	@Test

@@ -2,10 +2,10 @@ package com.example.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -25,6 +25,7 @@ public class Cart {
 	private int total_Cart_Price;
 	
 	@OneToOne
+	@JoinColumn(name = "cartUserID")
 	private User cartUserID;
 	
 	
@@ -64,6 +65,18 @@ public class Cart {
 	}
 
 	
+	public Cart() {
+		super();
+	}
+
+	public Cart(int cartId, int quantity, int total_Cart_Price, User cartUserID) {
+		super();
+		this.cartId = cartId;
+		this.quantity = quantity;
+		this.total_Cart_Price = total_Cart_Price;
+		this.cartUserID = cartUserID;
+	}
+
 	//---------------------------------//
 
 	
