@@ -1,6 +1,7 @@
 package com.example.pojo;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -19,7 +20,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "USER")
+@Table(name = "User")
 public class User {
 
 	@Id
@@ -43,7 +44,7 @@ public class User {
 	private String address;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "orderUserID")
-	private List<Order> userOrderID = new ArrayList<Order>();
+	private Set<Order> userOrderID = new HashSet<Order>();
 
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "cartUserID")
 	private Cart userCartID;
@@ -63,7 +64,7 @@ public class User {
 
 	
 	public User(String name, String email, String password, long mobileNumber, String address,
-			List<Order> userOrderID, Cart userCartID, Wishlist userWishlistID, List<Product> product) {
+			Set<Order> userOrderID, Cart userCartID, Wishlist userWishlistID, List<Product> product) {
 		super();
 		
 		this.name = name;
@@ -126,11 +127,11 @@ public class User {
 	}
 
 	
-	public List<Order> getUserOrderID() {
+	public Set<Order> getUserOrderID() {
 		return userOrderID;
 	}
 
-	public void setUserOrderID(List<Order> userOrderID) {
+	public void setUserOrderID(Set<Order> userOrderID) {
 		this.userOrderID = userOrderID;
 	}
 

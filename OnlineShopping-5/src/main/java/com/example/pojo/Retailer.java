@@ -46,6 +46,15 @@ public class Retailer {
 		return retailerId;
 	}
 
+	public Retailer(String name, String password, long mobileNumber, String categorie, String brand) {
+		super();
+		this.name = name;
+		this.password = password;
+		this.mobileNumber = mobileNumber;
+		this.categorie = categorie;
+		this.brand = brand;
+	}
+
 	/**
 	 * 
 	 */

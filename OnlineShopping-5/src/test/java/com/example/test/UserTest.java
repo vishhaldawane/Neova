@@ -19,7 +19,7 @@ public class UserTest {
 	void insertUserTest() {
 		User user = new User();
 
-		user.setName("Rishii_Neova");
+		user.setName("Ritika_Neova");
 		user.setEmail("Rishii@neova.com");
 		user.setPassword("Rishii123");
 		user.setMobileNumber(9405405443l);
@@ -30,8 +30,8 @@ public class UserTest {
 
 	@Test
 	void selectUserTest() {
-		User user;
-		user = userRepo.selectUser(66);
+		User user = userRepo.selectUser(7);
+		
 		System.out.println("------------------------------------");
 
 		System.out.println("User ID       :" + user.getUserId());
@@ -48,27 +48,23 @@ public class UserTest {
 	void deleteUserTest() {
 		User user = new User();
 		user.getUserId();
-		userRepo.deleteUser(65);
+		userRepo.deleteUser(9);
 	}
 
 	@Test
 	void updateUserTest() {
-		User user = new User();
+		
+		User user = userRepo.selectUser(8);
 
-		user.setUserId(66);
-		user.setName("Ritika");
-		user.setEmail("rupali@neova.com");
-		user.setPassword("rupali12345");
-		user.setMobileNumber(9156140178l);
-		user.setAddress("Warje, Deccan, 411028");
+		user.setEmail("Ritika@neova.com");
 
 		userRepo.updateUser(user);
 	}
 
 	@Test
 	void selectAllUsersTest() {
-		List<User> userList;
-		userList = userRepo.selectUsers();
+		List<User> userList= userRepo.selectUsers();
+	
 		System.out.println("------------------------------------");
 
 		for (User user : userList) {

@@ -30,11 +30,11 @@ public class ProductTest {
 	void insertProductTest() {
 		Product product = new Product();
 
-		product.setPrice(1000);
-		product.setImage("img-1");
-		product.setDescription("Sports");
-		product.setBrand("Adidas");
-		product.setStockRemaining(50);
+		product.setPrice(1500);
+		product.setImage("img-2");
+		product.setDescription("Office");
+		product.setBrand("Bata");
+		product.setStockRemaining(20);
 	
 
 		productRepo.insertProduct(product);
@@ -43,21 +43,44 @@ public class ProductTest {
 	
 	@Test
 	void newInsertProductWithUserAndAdminTest() {
-		Admin adminObj = adminRepo.selectAdmin(92);
-		User userObj = userRepo.selectUser(64);
+		
+		Admin adminObj = adminRepo.selectAdmin(1);
+		
+		User userObj = userRepo.selectUser(7);
+		
 		
 		Product product1 = new Product();
 
 		product1.setPrice(1500);
 		product1.setImage("img-2");
-		product1.setDescription("Sports");
-		product1.setBrand("Nike");
-		product1.setStockRemaining(50);
+		product1.setDescription("Office");
+		product1.setBrand("Bata");
+		product1.setStockRemaining(20);
 		product1.setProductAdminId(adminObj);
 		product1.setProductUserId(userObj);
 		
 		productRepo.insertProduct(product1);
 		
+	}
+	
+	@Test
+	void selectProductTest() {
+		
+		Product product= productRepo.selectProduct(12);
+		
+		System.out.println("------------------------------------");
+
+		System.out.println("Product prodId     :" + product.getProductId());
+		System.out.println("Product price      :" + product.getPrice());
+		System.out.println("Product image      :" + product.getImage());
+		System.out.println("Product desc       :" + product.getDescription());
+		System.out.println("Product brand      :" + product.getBrand());
+		System.out.println("Product stock_rem. :" + product.getStockRemaining());
+		System.out.println("Product adminId    :" + product.getProductAdminId());
+		System.out.println("Product userId     :" + product.getProductUserId());
+
+		System.out.println("------------------------------------");
+
 	}
 	
 	@Test
@@ -80,5 +103,23 @@ public class ProductTest {
 		}
 	}
 	
+	@Test
+	void deleteProductTest() {
+		Product product = new Product();
+		
+		productRepo.deleteProduct(11);
+		
+	}
+
+	@Test
+	void updateOrderTest() {
+		
+		Product product = productRepo.selectProduct(12);
+		
+		product.setStockRemaining(40);
+		
+		productRepo.merge(product);
+		
+	}
 		
 }

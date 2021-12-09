@@ -35,16 +35,18 @@ public class WishlistTest {
 	}
 
 	@Test
-	void insert() {
-		User userObj = userRepo.selectUser(65);
-	//	Product productObj = prodRepo.selectProduct(145);
+	void insertWishlistWithUserAndProduct() {
 		
-		Wishlist wishilist1 = new Wishlist();
+		Wishlist wishlist = new Wishlist();
 		
-	//	wishilist1.setWishlistProductID(productObj);
-		wishilist1.setWishlistUserID(userObj);
+		User user = userRepo.selectUser(7);
 		
-		wishlistRepo.insertWishlist(wishilist1);
+		Product product = prodRepo.selectProduct(12);
+		
+		wishlist.setWishlistProductID(product);
+		wishlist.setWishlistUserID(user);
+		
+		wishlistRepo.insertWishlist(wishlist);
 		
 	}
 	@Test
@@ -63,11 +65,12 @@ public class WishlistTest {
 	@Test
 	void selectWishlistTest() {
 		Wishlist wishlist;
-		wishlist = wishlistRepo.selectWishlist(83);
+		wishlist = wishlistRepo.selectWishlist(14);
 		System.out.println("------------------------------------");
 
 		System.out.println("Wishlist ID :" + wishlist.getWishlistId());
 		System.out.println("Admin Id    :" + wishlist.getWishlistUserID());
+		System.out.println("Product Id  :" + wishlist.getWishlistProductID());
 
 		System.out.println("------------------------------------");
 
@@ -79,24 +82,36 @@ public class WishlistTest {
 
 		wishlist.getWishlistId();
 
-		wishlistRepo.deleteWishlist(84);
+		wishlistRepo.deleteWishlist(15);
 	}
 
 	@Test
 	void updateOrderTest() {
-		Wishlist wishlist = new Wishlist();
+		Wishlist wishlist = wishlistRepo.selectWishlist(10);
+		
+		User user = userRepo.selectUser(7);
+		Product product = prodRepo.selectProduct(12);
+		
+		wishlist.setWishlistProductID(product);
+		wishlist.setWishlistUserID(user);
 
 		wishlistRepo.insertWishlist(wishlist);
 	}
 
 	@Test
 	void selectAllWishlistsTest() {
+		
 		List<Wishlist> wishlistList;
 		wishlistList = wishlistRepo.selectWishlists();
-		System.out.println("------------------------------------");
+		
 
 		for (Wishlist wishlist : wishlistList) {
+			System.out.println("------------------------------------");
+			
 			System.out.println("Wishlist ID :" + wishlist.getWishlistId());
+			System.out.println("Admin Id    :" + wishlist.getWishlistUserID());
+			System.out.println("Product Id  :" + wishlist.getWishlistProductID());
+			
 			System.out.println("------------------------------------");
 
 		}

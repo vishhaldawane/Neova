@@ -39,7 +39,7 @@ public class RetailerTest {
 	@Test
 	void insertRetailerWithAdminTest() {
 		
-		Admin admin1 = adminRepo.selectAdmin(75);
+		Admin admin1 = adminRepo.selectAdmin(1);
 		
 		Retailer ret1 = new Retailer("R-Ajay", "rahul123", 9405405522l, "Mobile", "Sony", admin1);
 		
@@ -52,7 +52,7 @@ public class RetailerTest {
 	void selectRetailerTest()
 	{
 		Retailer retailer ;
-		retailer = retailerRepo.selectRetailer(78);
+		retailer = retailerRepo.selectRetailer(5);
 		System.out.println("------------------------------------");
 
 		System.out.println("Retailer ID           :"+retailer.getRetailerId());
@@ -72,21 +72,16 @@ public class RetailerTest {
 		
 		retailer.getRetailerId();
 		
-		retailerRepo.deleteRetailer(80);
+		retailerRepo.deleteRetailer(6);
 	}
 	
 	@Test 
 	void updateRetailerTest()
 	{
-		Retailer retailer = new Retailer();
+		Retailer retailer = retailerRepo.selectRetailer(5);
+		
+		retailer.setPassword("ajay@123");
 	
-		retailer.setRetailerId(78);
-		retailer.setName("Rishii");
-		retailer.setPassword("rishikesh123");
-		retailer.setMobileNumber(9405405443l);
-		retailer.setCategorie("Shoes");
-		retailer.setBrand("Addidas");
-				
 		retailerRepo.updateRetailer(retailer);
 	}
 	
@@ -105,6 +100,7 @@ public class RetailerTest {
 			System.out.println("Retailer MobileNumber :"+retailer.getMobileNumber());
 			System.out.println("Retailer Categories   :"+retailer.getCategorie());
 			System.out.println("Retailer Brand        :"+retailer.getBrand());
+			
 			System.out.println("------------------------------------");
 
 		}

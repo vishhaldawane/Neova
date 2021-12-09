@@ -31,7 +31,7 @@ public class Admin {
 	@Column(name = "password")
 	private String password;
 	
-	@OneToMany(cascade = CascadeType.ALL) 
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "retailerAdminID") 
 	private List<Retailer> adminRetailerID = new ArrayList<Retailer>();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productAdminId")

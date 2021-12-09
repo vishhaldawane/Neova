@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "ordertable")
+@Table(name = "Ordertable")
 public class Order {
 
 	@Id

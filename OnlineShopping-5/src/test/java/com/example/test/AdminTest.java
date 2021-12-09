@@ -30,7 +30,7 @@ public class AdminTest {
 	void selectAdminTest()
 	{
 		Admin admin ;
-		admin = adminRepo.selectAdmin(75);
+		admin = adminRepo.selectAdmin(1);
 		System.out.println("------------------------------------");
 
 		System.out.println("Admin ID        :"+admin.getAdminId());
@@ -47,7 +47,7 @@ public class AdminTest {
 		
 		admin.getAdminId();
 		
-		adminRepo.deleteAdmin(76);
+		adminRepo.deleteAdmin(3);
 	}
 	
 	@Test 
@@ -55,8 +55,8 @@ public class AdminTest {
 	{
 		Admin admin = new Admin();
 	
-		admin.setAdminId(75);
-		admin.setName("Rishii");
+		admin.setAdminId(1);
+		admin.setName("A-Rishi");
 		admin.setPassword("rishikesh123");
 				
 		adminRepo.updateAdmin(admin);
