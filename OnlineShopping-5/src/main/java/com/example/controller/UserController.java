@@ -20,38 +20,33 @@ public class UserController {
 
 	@Autowired
 	UserRepositoryImpl userRepo;
-	
-	@GetMapping("/get/{uID}")  //localhost:8080/user/get/64
-	public User getUser(@PathVariable("uID") int x)
-	{
+
+	@GetMapping("/get/{uID}") // localhost:8080/user/get/7
+	public User getUser(@PathVariable("uID") int x) {
 		User user;
 		user = userRepo.selectUser(x);
 		return user;
 	}
-	
+
 	@PostMapping("/add")
-	public void addUser(@RequestBody User aObj)
-	{
+	public void addUser(@RequestBody User aObj) {
 		userRepo.insertUser(aObj);
 	}
-	
-	@GetMapping("/getAll")  //localhost:8080/user/getAll
-	public List <User> getUsers()
-	{
-		List <User> userList;
+
+	@GetMapping("/getAll") // localhost:8080/user/getAll
+	public List<User> getUsers() {
+		List<User> userList;
 		userList = userRepo.selectUsers();
 		return userList;
 	}
-	
+
 	@PutMapping("/update")
-	public void updateUser(@RequestBody User uID)
-	{
+	public void updateUser(@RequestBody User uID) {
 		userRepo.updateUser(uID);
 	}
-	
+
 	@PutMapping("/delete/{uID}")
-	public void deleteUser(@PathVariable("uID") int x)
-	{
+	public void deleteUser(@PathVariable("uID") int x) {
 		userRepo.deleteUser(x);
 	}
 }

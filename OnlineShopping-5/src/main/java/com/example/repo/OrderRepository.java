@@ -9,12 +9,13 @@ import com.example.pojo.Order;
 @Repository
 public interface OrderRepository {
 
-	void insertOrder(Order oObj); //C
+	void insertOrder(Order oObj); // C
 
-	Order selectOrder(int oID); //R
-	List<Order> selectOrders(); //RA
+	Order selectOrder(int oID); // R
 
-	void updateOrder(Order oID); //U
-	
-	void deleteOrder(int oID); //D
+	List<Order> selectOrders(); // RA
+
+	void updateOrder(Order oID); // U
+
+	void deleteOrder(int oID); // D
 }

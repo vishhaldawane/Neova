@@ -1,7 +1,6 @@
 package com.example.pojo;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -9,25 +8,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Product")
+@Table(name = "Product")
 public class Product {
 
 	@Id
 	@GeneratedValue
 	private int productId;
-	
+
 	private int price;
 	private String image;
 	private String description;
 	private String brand;
 	private int stockRemaining;
-	
+
 	@ManyToOne
-	@JoinColumn(name="adminId")
+	@JoinColumn(name = "adminId")
 	private Admin productAdminId;
-	
+
 	@ManyToOne
-	@JoinColumn(name="userId")
+	@JoinColumn(name = "userId")
 	private User productUserId;
 
 	public int getProductId() {
@@ -96,11 +95,10 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", price=" + price + ", image=" + image + ", description=" + description
-				+ ", brand=" + brand + ", stockRemaining=" + stockRemaining + ", productAdminId=" + productAdminId
-				+ ", productUserId=" + productUserId + "]";
+		return "Product [productId=" + productId + ", price=" + price + ", image=" + image + ", description="
+				+ description + ", brand=" + brand + ", stockRemaining=" + stockRemaining + ", productAdminId="
+				+ productAdminId + ", productUserId=" + productUserId + "]";
 	}
-
 
 	public Product() {
 		super();
@@ -118,5 +116,4 @@ public class Product {
 		this.productUserId = productUserId;
 	}
 
-	
 }

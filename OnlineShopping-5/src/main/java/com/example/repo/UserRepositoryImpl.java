@@ -52,12 +52,12 @@ public class UserRepositoryImpl extends BaseRepository implements UserRepository
 		System.out.println("UserRepositoryImpl : Deleting User");
 
 	}
-	
+
 	@Transactional
 	public void updateUser(int dID) {
 		super.merge(dID);
 		System.out.println("UserRepositoryImpl : Updating User...");
-		
+
 	}
 
 }

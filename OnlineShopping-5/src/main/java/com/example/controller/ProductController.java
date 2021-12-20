@@ -19,40 +19,35 @@ import com.example.repo.ProductRepositoryImpl;
 
 public class ProductController {
 
-		@Autowired
-		ProductRepositoryImpl  productRepo;
-		
-		@GetMapping("/get/{pID}")  //localhost:8080/product/get/108
-		public Product getProduct(@PathVariable("pID") int x)
-		{
-			Product product;
-			product = productRepo.selectProduct(x);
-			return product;
-		}
-		
-		@PostMapping("/add")
-		public void addProduct(@RequestBody Product pObj)
-		{
-			productRepo.insertProduct(pObj);
-		}
-		
-		@GetMapping("/getAll")  //localhost:8080/product/getAll
-		public List <Product> getProducts()
-		{
-			List <Product> productList;
-			productList = productRepo.selectProducts();
-			return productList;
-		}
-		
-		@PutMapping("/update")
-		public void updateProduct(@RequestBody Product pID)
-		{
-			productRepo.updateProduct(pID);
-		}
-		
-		@PutMapping("/delete/{pID}")
-		public void deleteProduct(@PathVariable("pID") int x)
-		{
-			productRepo.deleteProduct(x);
-		}
+	@Autowired
+	ProductRepositoryImpl productRepo;
+
+	@GetMapping("/get/{pID}") // localhost:8080/product/get/12
+	public Product getProduct(@PathVariable("pID") int x) {
+		Product product;
+		product = productRepo.selectProduct(x);
+		return product;
+	}
+
+	@PostMapping("/add")
+	public void addProduct(@RequestBody Product pObj) {
+		productRepo.insertProduct(pObj);
+	}
+
+	@GetMapping("/getAll") // localhost:8080/product/getAll
+	public List<Product> getProducts() {
+		List<Product> productList;
+		productList = productRepo.selectProducts();
+		return productList;
+	}
+
+	@PutMapping("/update")
+	public void updateProduct(@RequestBody Product pID) {
+		productRepo.updateProduct(pID);
+	}
+
+	@PutMapping("/delete/{pID}")
+	public void deleteProduct(@PathVariable("pID") int x) {
+		productRepo.deleteProduct(x);
+	}
 }

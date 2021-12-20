@@ -2,7 +2,6 @@ package com.example.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -12,35 +11,32 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Retailer")
 public class Retailer {
-	
+
 	@Id
 	@GeneratedValue
 	@Column(name = "retailerId")
 	private int retailerId;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "password")
 	private String password;
-	
+
 	@Column(name = "mobileNumber")
 	private long mobileNumber;
-	
+
 	@Column(name = "categorie")
 	private String categorie;
-	
+
 	@Column(name = "brand")
 	private String brand;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "adminId")
 	private Admin retailerAdminID;
-	
-	
-	//-----------------------------//
 
-	
+	// -----------------------------//
 
 	public int getRetailerId() {
 		return retailerId;
@@ -74,7 +70,7 @@ public class Retailer {
 	public Retailer(String name, String password, long mobileNumber, String categorie, String brand,
 			Admin retailerAdminID) {
 		super();
-		
+
 		this.name = name;
 		this.password = password;
 		this.mobileNumber = mobileNumber;
@@ -135,16 +131,13 @@ public class Retailer {
 		this.retailerAdminID = retailerAdminID;
 	}
 
-	
-	//-----------------------------//
+	// -----------------------------//
 
-	
 	@Override
 	public String toString() {
 		return "Retailer [retailerId=" + retailerId + ", name=" + name + ", password=" + password + ", mobileNumber="
 				+ mobileNumber + ", categorie=" + categorie + ", brand=" + brand + ", retailerAdminID="
 				+ retailerAdminID + "]";
 	}
-	
-	
+
 }

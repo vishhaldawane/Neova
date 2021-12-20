@@ -7,25 +7,22 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.pojo.Admin;
+
 import com.example.pojo.Cart;
-
-
 
 @Repository
 public class CartRepositoryImpl extends BaseRepository implements CartRepository {
-	
+
 	public CartRepositoryImpl() {
-		System.out.println("CartRepositoryImpl ..");	
-    }
-	
+		System.out.println("CartRepositoryImpl ..");
+	}
+
 	@Transactional
 	public void insertCart(Cart cObj) {
 		super.persist(cObj);
-		System.out.println("Cart inserted...");	
+		System.out.println("Cart inserted...");
 	}
-	
-	
+
 	@Override
 	public Cart selectCart(int cID) {
 		System.out.println("CartRepositoryImpl : selecting Cart by cID");
@@ -36,7 +33,7 @@ public class CartRepositoryImpl extends BaseRepository implements CartRepository
 
 	@Override
 	public List<Cart> selectCarts() {
-		List<Cart>  cartList = new ArrayList<Cart>();
+		List<Cart> cartList = new ArrayList<Cart>();
 
 		System.out.println("CartRepositoryImpl : Selecting all Carts...");
 		return super.findAll("Cart");
@@ -57,7 +54,3 @@ public class CartRepositoryImpl extends BaseRepository implements CartRepository
 	}
 
 }
-	
-	
-
-

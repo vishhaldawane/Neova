@@ -11,13 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name = "User")
@@ -43,30 +39,28 @@ public class User {
 	@Column(name = "address")
 	private String address;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "orderUserID")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "orderUserID", fetch = FetchType.LAZY)
 	private Set<Order> userOrderID = new HashSet<Order>();
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "cartUserID")
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "cartUserID", fetch = FetchType.LAZY)
 	private Cart userCartID;
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "wishlistUserID")
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "wishlistUserID", fetch = FetchType.LAZY)
 	private Wishlist userWishlistID;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productUserId")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productUserId", fetch = FetchType.LAZY)
 	private List<Product> product = new ArrayList<Product>();
 
-	
 	public User() {
 		super();
 	}
 
 	// ---------------------------------//
 
-	
-	public User(String name, String email, String password, long mobileNumber, String address,
-			Set<Order> userOrderID, Cart userCartID, Wishlist userWishlistID, List<Product> product) {
+	public User(String name, String email, String password, long mobileNumber, String address, Set<Order> userOrderID,
+			Cart userCartID, Wishlist userWishlistID, List<Product> product) {
 		super();
-		
+
 		this.name = name;
 		this.email = email;
 		this.password = password;
@@ -126,7 +120,6 @@ public class User {
 		this.address = address;
 	}
 
-	
 	public Set<Order> getUserOrderID() {
 		return userOrderID;
 	}
@@ -158,11 +151,9 @@ public class User {
 	public void setProduct(List<Product> product) {
 		this.product = product;
 	}
-	
-	
+
 	// ---------------------------------//
 
-	
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", name=" + name + ", email=" + email + ", password=" + password
@@ -170,5 +161,4 @@ public class User {
 				+ ", userCartID=" + userCartID + ", userWishlistID=" + userWishlistID + ", product=" + product + "]";
 	}
 
-	
 }

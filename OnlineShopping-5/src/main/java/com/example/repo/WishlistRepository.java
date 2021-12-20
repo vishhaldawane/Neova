@@ -5,12 +5,13 @@ import com.example.pojo.Wishlist;
 
 public interface WishlistRepository {
 
-	void insertWishlist(Wishlist uObj); //C
+	void insertWishlist(Wishlist uObj); // C
 
-	Wishlist selectWishlist(int uID); //R
-	List<Wishlist> selectWishlists(); //RA
+	Wishlist selectWishlist(int uID); // R
 
-	void updateWishlist(Wishlist uID); //U
-	
-	void deleteWishlist(int uID); //D
+	List<Wishlist> selectWishlists(); // RA
+
+	void updateWishlist(Wishlist uID); // U
+
+	void deleteWishlist(int uID); // D
 }

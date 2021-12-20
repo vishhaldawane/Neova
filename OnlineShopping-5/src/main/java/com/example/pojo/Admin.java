@@ -12,54 +12,36 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "Admin")
 public class Admin {
 
-	
 	@Id
 	@GeneratedValue
 	@Column(name = "adminId")
 	private int adminId;
-	
-	
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "password")
 	private String password;
-	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "retailerAdminID") 
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "retailerAdminID", fetch = FetchType.LAZY)
 	private List<Retailer> adminRetailerID = new ArrayList<Retailer>();
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productAdminId")
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productAdminId", fetch = FetchType.LAZY)
 	private List<Product> adminProductID = new ArrayList<Product>();
 
-	
-	
-	/**
-	 * 
-	 */
 	public Admin() {
 		super();
 	}
 
-	//-----------------------------//
-	
-	
-	/**
-	 * @param adminId
-	 * @param name
-	 * @param password
-	 * @param adminRetailerID
-	 * @param adminProductID
-	 */
-	public Admin(String name, String password, List<Retailer> adminRetailerID,
-			List<Product> adminProductID) {
+	// -----------------------------//
+
+	public Admin(String name, String password, List<Retailer> adminRetailerID, List<Product> adminProductID) {
 		super();
-	
+
 		this.name = name;
 		this.password = password;
 		this.adminRetailerID = adminRetailerID;
@@ -106,16 +88,12 @@ public class Admin {
 		this.adminProductID = adminProductID;
 	}
 
-	
-	//-----------------------------//
+	// -----------------------------//
 
-	
 	@Override
 	public String toString() {
 		return "Admin [adminId=" + adminId + ", name=" + name + ", password=" + password + ", adminRetailerID="
 				+ adminRetailerID + ", adminProductID=" + adminProductID + "]";
 	}
-	
-	
-}
 
+}

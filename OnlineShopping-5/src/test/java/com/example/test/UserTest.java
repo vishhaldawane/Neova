@@ -31,7 +31,7 @@ public class UserTest {
 	@Test
 	void selectUserTest() {
 		User user = userRepo.selectUser(7);
-		
+
 		System.out.println("------------------------------------");
 
 		System.out.println("User ID       :" + user.getUserId());
@@ -53,7 +53,7 @@ public class UserTest {
 
 	@Test
 	void updateUserTest() {
-		
+
 		User user = userRepo.selectUser(8);
 
 		user.setEmail("Ritika@neova.com");
@@ -63,8 +63,8 @@ public class UserTest {
 
 	@Test
 	void selectAllUsersTest() {
-		List<User> userList= userRepo.selectUsers();
-	
+		List<User> userList = userRepo.selectUsers();
+
 		System.out.println("------------------------------------");
 
 		for (User user : userList) {

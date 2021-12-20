@@ -2,7 +2,6 @@ package com.example.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -17,20 +16,18 @@ public class Cart {
 	@GeneratedValue
 	@Column(name = "cartId")
 	private int cartId;
-	
+
 	@Column(name = "quantity")
 	private int quantity;
-	
+
 	@Column(name = "total_Cart_Price")
 	private int total_Cart_Price;
-	
+
 	@OneToOne
 	@JoinColumn(name = "cartUserID")
 	private User cartUserID;
-	
-	
-	//---------------------------------//
 
+	// ---------------------------------//
 
 	public int getCartId() {
 		return cartId;
@@ -64,7 +61,6 @@ public class Cart {
 		this.cartUserID = cartUserID;
 	}
 
-	
 	public Cart() {
 		super();
 	}
@@ -77,13 +73,12 @@ public class Cart {
 		this.cartUserID = cartUserID;
 	}
 
-	//---------------------------------//
+	// ---------------------------------//
 
-	
 	@Override
 	public String toString() {
 		return "Cart [cartId=" + cartId + ", quantity=" + quantity + ", total_Cart_Price=" + total_Cart_Price
 				+ ", cartUserID=" + cartUserID + "]";
-	}	
-	
+	}
+
 }

@@ -8,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.pojo.Cart;
 import com.example.pojo.User;
-import com.example.pojo.Wishlist;
 import com.example.repo.CartRepositoryImpl;
 import com.example.repo.UserRepositoryImpl;
 
@@ -36,10 +35,10 @@ public class CartTest {
 
 		Cart cart = new Cart();
 
-		cart.setQuantity(10);
-		cart.setTotal_Cart_Price(10000);
+		cart.setQuantity(50);
+		cart.setTotal_Cart_Price(28000);
 
-		User userObj = userRepo.selectUser(64);
+		User userObj = userRepo.selectUser(7);
 
 		cart.setCartUserID(userObj);
 
@@ -50,30 +49,32 @@ public class CartTest {
 	@Test
 	void selectCartTest() {
 		Cart cart;
-		cart = cartRepo.selectCart(72);
+		cart = cartRepo.selectCart(23);
 		System.out.println("------------------------------------");
 
 		System.out.println("Cart ID         :" + cart.getCartId());
 		System.out.println("Cart Quantity   :" + cart.getQuantity());
 		System.out.println("Cart TotalPrice :" + cart.getTotal_Cart_Price());
+//		System.out.println("User ID         :" + cart.getCartUserID());
+		
 		System.out.println("------------------------------------");
 
 	}
 
 	@Test
 	void deleteOrderTest() {
-		Cart cartObj = cartRepo.find(Cart.class, 73);
-		cartObj.getCartId();
-
-		cartRepo.remove(Cart.class, 73);
+		
+		Cart cart1 = new Cart();
+	
+		cartRepo.deleteCart(24);
 	}
 
 	@Test
 	void updateCartTest() {
-		Cart cartObj = cartRepo.find(Cart.class, 72);
+		Cart cartObj = cartRepo.selectCart(23);
 
-		cartObj.setQuantity(5);
-		cartObj.setTotal_Cart_Price(5000);
+		cartObj.setQuantity(26);
+		cartObj.setTotal_Cart_Price(78200);
 
 		cartRepo.merge(cartObj);
 	}
@@ -88,6 +89,8 @@ public class CartTest {
 			System.out.println("Cart ID         :" + cart.getCartId());
 			System.out.println("Cart Quantity   :" + cart.getQuantity());
 			System.out.println("Cart TotalPrice :" + cart.getTotal_Cart_Price());
+//			System.out.println("User ID         :" + cart.getCartUserID());
+			
 			System.out.println("------------------------------------");
 
 		}

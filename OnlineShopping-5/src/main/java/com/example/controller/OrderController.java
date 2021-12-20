@@ -14,45 +14,39 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.pojo.Order;
 import com.example.repo.OrderRepositoryImpl;
 
-
 @RestController
 @RequestMapping("/order")
 public class OrderController {
 
 	@Autowired
-	OrderRepositoryImpl  orderRepo;
-	
-	@GetMapping("/get/{oID}")  //localhost:8080/order/get/125
-	public Order getAdmin(@PathVariable("oID") int x)
-	{
+	OrderRepositoryImpl orderRepo;
+
+	@GetMapping("/get/{oID}") // localhost:8080/order/get/17
+	public Order getAdmin(@PathVariable("oID") int x) {
 		Order order;
 		order = orderRepo.selectOrder(x);
 		return order;
 	}
-	
+
 	@PostMapping("/add")
-	public void addOrder(@RequestBody Order oObj)
-	{
+	public void addOrder(@RequestBody Order oObj) {
 		orderRepo.insertOrder(oObj);
 	}
-	
-	@GetMapping("/getAll")  //localhost:8080/order/getAll
-	public List <Order> getOrders()
-	{
-		List <Order> orderList;
+
+	@GetMapping("/getAll") // localhost:8080/order/getAll
+	public List<Order> getOrders() {
+		List<Order> orderList;
 		orderList = orderRepo.selectOrders();
 		return orderList;
 	}
-	
+
 	@PutMapping("/update")
-	public void updateOrder(@RequestBody Order oID)
-	{
+	public void updateOrder(@RequestBody Order oID) {
 		orderRepo.updateOrder(oID);
 	}
-	
+
 	@PutMapping("/delete/{oID}")
-	public void deleteOrder(@PathVariable("oID") int x)
-	{
+	public void deleteOrder(@PathVariable("oID") int x) {
 		orderRepo.deleteOrder(x);
 	}
 }

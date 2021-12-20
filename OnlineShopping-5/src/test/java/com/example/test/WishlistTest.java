@@ -6,11 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.pojo.Cart;
 import com.example.pojo.Product;
 import com.example.pojo.User;
 import com.example.pojo.Wishlist;
-import com.example.repo.CartRepositoryImpl;
 import com.example.repo.ProductRepositoryImpl;
 import com.example.repo.UserRepositoryImpl;
 import com.example.repo.WishlistRepositoryImpl;
@@ -23,7 +21,7 @@ public class WishlistTest {
 
 	@Autowired
 	UserRepositoryImpl userRepo;
-	
+
 	@Autowired
 	ProductRepositoryImpl prodRepo;
 
@@ -36,28 +34,27 @@ public class WishlistTest {
 
 	@Test
 	void insertWishlistWithUserAndProduct() {
-		
+
 		Wishlist wishlist = new Wishlist();
-		
+
 		User user = userRepo.selectUser(7);
-		
+
 		Product product = prodRepo.selectProduct(12);
-		
+
 		wishlist.setWishlistProductID(product);
 		wishlist.setWishlistUserID(user);
-		
+
 		wishlistRepo.insertWishlist(wishlist);
-		
+
 	}
+
 	@Test
 	void insertWishlistWithUserTest() {
 		Wishlist wishlistObj = new Wishlist();
-		
 
 		User userObj = userRepo.find(User.class, 66);
 
 		wishlistObj.setWishlistUserID(userObj);
-		
 
 		wishlistRepo.merge(wishlistObj);
 	}
@@ -65,12 +62,12 @@ public class WishlistTest {
 	@Test
 	void selectWishlistTest() {
 		Wishlist wishlist;
-		wishlist = wishlistRepo.selectWishlist(14);
+		wishlist = wishlistRepo.selectWishlist(28);
 		System.out.println("------------------------------------");
 
 		System.out.println("Wishlist ID :" + wishlist.getWishlistId());
-		System.out.println("Admin Id    :" + wishlist.getWishlistUserID());
-		System.out.println("Product Id  :" + wishlist.getWishlistProductID());
+//		System.out.println("Admin Id    :" + wishlist.getWishlistUserID());
+//		System.out.println("Product Id  :" + wishlist.getWishlistProductID());
 
 		System.out.println("------------------------------------");
 
@@ -82,16 +79,17 @@ public class WishlistTest {
 
 		wishlist.getWishlistId();
 
-		wishlistRepo.deleteWishlist(15);
+		wishlistRepo.deleteWishlist(26);
+		
 	}
 
 	@Test
 	void updateOrderTest() {
 		Wishlist wishlist = wishlistRepo.selectWishlist(10);
-		
+
 		User user = userRepo.selectUser(7);
 		Product product = prodRepo.selectProduct(12);
-		
+
 		wishlist.setWishlistProductID(product);
 		wishlist.setWishlistUserID(user);
 
@@ -100,18 +98,18 @@ public class WishlistTest {
 
 	@Test
 	void selectAllWishlistsTest() {
-		
+
 		List<Wishlist> wishlistList;
 		wishlistList = wishlistRepo.selectWishlists();
-		
 
+		System.out.println("------------------------------------");
+		
 		for (Wishlist wishlist : wishlistList) {
-			System.out.println("------------------------------------");
 			
 			System.out.println("Wishlist ID :" + wishlist.getWishlistId());
-			System.out.println("Admin Id    :" + wishlist.getWishlistUserID());
-			System.out.println("Product Id  :" + wishlist.getWishlistProductID());
-			
+//			System.out.println("Admin Id    :" + wishlist.getWishlistUserID());
+//			System.out.println("Product Id  :" + wishlist.getWishlistProductID());
+
 			System.out.println("------------------------------------");
 
 		}

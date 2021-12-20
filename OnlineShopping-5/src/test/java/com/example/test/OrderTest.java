@@ -1,5 +1,6 @@
 package com.example.test;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -7,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.pojo.Order;
-import com.example.pojo.Retailer;
 import com.example.pojo.User;
 
 import com.example.repo.OrderRepositoryImpl;
@@ -26,9 +26,9 @@ public class OrderTest {
 	void insertOrderTest() {
 		Order order = new Order();
 
-		order.setLocalDate(null);
-		order.setQuantity(10);
-		order.setTotal_Order_Price(10000);
+		order.setLocalDate(LocalDate.of(1997, 06, 02));
+		order.setQuantity(20);
+		order.setTotal_Order_Price(18000);
 
 		orderRepo.insertOrder(order);
 	}
@@ -40,9 +40,9 @@ public class OrderTest {
 
 		Order order1 = new Order();
 
-		order1.setLocalDate(null);
-		order1.setQuantity(25);
-		order1.setTotal_Order_Price(50000);
+		order1.setLocalDate(LocalDate.of(1997, 06, 02));
+		order1.setQuantity(75);
+		order1.setTotal_Order_Price(550000);
 		order1.setOrderUserID(userObj);
 
 		orderRepo.insertOrder(order1);
@@ -73,7 +73,7 @@ public class OrderTest {
 	@Test
 	void selectOrder() {
 
-		Order order = orderRepo.selectOrder(18);
+		Order order = orderRepo.selectOrder(19);
 
 		System.out.println("------------------------------------");
 
@@ -81,26 +81,24 @@ public class OrderTest {
 		System.out.println("Order Date        :" + order.getLocalDate());
 		System.out.println("Order Quantity    :" + order.getQuantity());
 		System.out.println("Order Total_Price :" + order.getTotal_Order_Price());
-		System.out.println("Order UserId      :" + order.getOrderUserID());
-		
+//		System.out.println("Order UserId      :" + order.getOrderUserID());
+
 		System.out.println("------------------------------------");
 	}
-	
-	@Test 
-	void selectAllOrder()
-	{
-		List <Order> orderList;
+
+	@Test
+	void selectAllOrder() {
+		List<Order> orderList;
 		orderList = orderRepo.selectOrders();
 		System.out.println("------------------------------------");
 
-		for(Order order : orderList)
-		{
+		for (Order order : orderList) {
 			System.out.println("Order Id          :" + order.getOrderId());
 			System.out.println("Order Date        :" + order.getLocalDate());
 			System.out.println("Order Quantity    :" + order.getQuantity());
 			System.out.println("Order Total_Price :" + order.getTotal_Order_Price());
-			System.out.println("Order UserId      :" + order.getOrderUserID());
-			
+//			System.out.println("Order UserId      :" + order.getOrderUserID());
+
 			System.out.println("------------------------------------");
 
 		}

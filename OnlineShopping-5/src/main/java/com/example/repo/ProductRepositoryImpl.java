@@ -13,18 +13,17 @@ import com.example.pojo.Product;
 public class ProductRepositoryImpl extends BaseRepository implements ProductRepository {
 
 	public ProductRepositoryImpl() {
-		System.out.println("ProductRepositoryImpl ..");	
-    }
-	
+		System.out.println("ProductRepositoryImpl ..");
+	}
+
 	@Transactional
 	public void insertProduct(Product pObj) {
 		super.persist(pObj);
 		System.out.println("Product inserted...");
 	}
 
-
 	@Override
-	public  Product selectProduct(int pID) {
+	public Product selectProduct(int pID) {
 		System.out.println("ProductRepositoryImpl : selecting Product by pID");
 		Product product = super.find(Product.class, pID);
 
@@ -33,7 +32,7 @@ public class ProductRepositoryImpl extends BaseRepository implements ProductRepo
 
 	@Override
 	public List<Product> selectProducts() {
-		List<Product>  productList = new ArrayList<Product>();
+		List<Product> productList = new ArrayList<Product>();
 
 		System.out.println("OrderRepositoryImpl : Selecting all Products...");
 		return super.findAll("Product");
@@ -53,6 +52,4 @@ public class ProductRepositoryImpl extends BaseRepository implements ProductRepo
 
 	}
 
-	}
-
-
+}

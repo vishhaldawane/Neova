@@ -18,40 +18,35 @@ import com.example.repo.CartRepositoryImpl;
 @RequestMapping("/cart")
 public class CartController {
 
-		@Autowired
-		CartRepositoryImpl cartRepo;
-		
-		@GetMapping("/get/{cID}")  //localhost:8080/cart/get/72
-		public Cart getCart(@PathVariable("cID") int x)
-		{
-			Cart cart;
-			cart = cartRepo.selectCart(x);
-			return cart;
-		}
-		
-		@PostMapping("/add")
-		public void addCart(@RequestBody Cart cObj)
-		{
-			cartRepo.insertCart(cObj);
-		}
-		
-		@GetMapping("/getAll")  //localhost:8080/cart/getAll
-		public List <Cart> getCarts()
-		{
-			List <Cart> cartList;
-			cartList = cartRepo.selectCarts();
-			return cartList;
-		}
-		
-		@PutMapping("/update")
-		public void updateCart(@RequestBody Cart cID)
-		{
-			cartRepo.updateCart(cID);
-		}
-		
-		@PutMapping("/delete/{cID}")
-		public void deleteCart(@PathVariable("cID") int x)
-		{
-			cartRepo.deleteCart(x);
-		}
+	@Autowired
+	CartRepositoryImpl cartRepo;
+
+	@GetMapping("/get/{cID}") // localhost:8080/cart/get/72
+	public Cart getCart(@PathVariable("cID") int x) {
+		Cart cart;
+		cart = cartRepo.selectCart(x);
+		return cart;
+	}
+
+	@PostMapping("/add")
+	public void addCart(@RequestBody Cart cObj) {
+		cartRepo.insertCart(cObj);
+	}
+
+	@GetMapping("/getAll") // localhost:8080/cart/getAll
+	public List<Cart> getCarts() {
+		List<Cart> cartList;
+		cartList = cartRepo.selectCarts();
+		return cartList;
+	}
+
+	@PutMapping("/update")
+	public void updateCart(@RequestBody Cart cID) {
+		cartRepo.updateCart(cID);
+	}
+
+	@PutMapping("/delete/{cID}")
+	public void deleteCart(@PathVariable("cID") int x) {
+		cartRepo.deleteCart(x);
+	}
 }
