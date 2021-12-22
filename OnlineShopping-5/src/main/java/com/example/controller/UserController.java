@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,7 +47,7 @@ public class UserController {
 		userRepo.updateUser(uID);
 	}
 
-	@PutMapping("/delete/{uID}")
+	@DeleteMapping("/delete/{uID}")
 	public void deleteUser(@PathVariable("uID") int x) {
 		userRepo.deleteUser(x);
 	}

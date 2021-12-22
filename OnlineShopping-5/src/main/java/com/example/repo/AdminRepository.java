@@ -17,7 +17,6 @@ public interface AdminRepository {
 
 	void deleteAdmin(int aID); // D
 	
-	//--------------Retailer--------------------//
 	
 
 }
